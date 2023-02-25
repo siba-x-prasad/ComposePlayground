@@ -30,7 +30,9 @@ fun LoginScreen() {
     }
 }
 
-@Preview
+@Preview(name = "LoginScreenPreview", device = "spec:width=411dp,height=891dp",
+    backgroundColor = 0xFFFF9800
+)
 @Composable
 fun LoginPreview(){
     LoginScreen()
