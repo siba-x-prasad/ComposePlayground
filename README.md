@@ -4,63 +4,25 @@
 - https://www.jetpackcompose.net/
 - https://www.youtube.com/watch?v=cDabx3SjuOY&list=PLQkwcJG4YTCSpJ2NLhDTHhi6XBNfk9WiC&index=2
 - https://medium.com/androiddevelopers/effective-state-management-for-textfield-in-compose-d6e5b070fbe5
-- 
-- **What is Jetpack Compose ?**
-- Jetpack Compose is a modern toolkit for building native Android UI. 
-- Jetpack Compose simplifies and accelerates UI development on Android with less code, powerful tools, and intuitive Kotlin APIs. 
-- Jetpack Compose is totally declarative programming, which means you can describe your user interface by invoking a set of composable.
-- For past ten years we have been using a traditional way of imperative UI design.  
-
-## Advantages of Jetpack Compose 
-- It is very fast and offers a smooth performance. 
-- It’s simple to learn.
-- It is possible to interoperate with an imperative approach.
-- Offers a better way to implement loose coupling principles.
-- It is 100% made in Kotlin which makes it a modern approach in Android development.
-
-## Composable Function
-- It's same as any function in programming. But we need to annotate with @Composable annotation.
-- Syntax:
-```
-@Composable
-fun MethodName(parameter: String) {
-//your content
-}
-```
-- Example
-```
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-```
-## HelloWorld using Jetpack Compose
-```
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            Greeting("World")
-        }
-    }
-}
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-```
-
-## Compose Topics
 - [Youtube Link](https://github.com/siba-x-prasad/ComposePlayground/blob/main/readMe/ComposeYoutube.md)
-- [Modifier](https://github.com/siba-x-prasad/ComposePlayground/blob/main/readMe/modifiers.md)
-- [Preview](https://github.com/siba-x-prasad/ComposePlayground/blob/main/readMe/preview.md)
-- [List](https://github.com/siba-x-prasad/ComposePlayground/blob/main/readMe/list.md)
-- [Row & Column](https://github.com/siba-x-prasad/ComposePlayground/blob/main/readMe/rowColumn.md)
+## Compose Topics
+- [Introduction](https://github.com/siba-x-prasad/ComposePlayground/blob/main/readMe/1.Introduction.md)
+- [Compose Preview](https://github.com/siba-x-prasad/ComposePlayground/blob/main/readMe/2.ComposePreview.md)
+- [Row And Column](https://github.com/siba-x-prasad/ComposePlayground/blob/main/readMe/3.rowColumn.md)
+- [Modifiers](https://github.com/siba-x-prasad/ComposePlayground/blob/main/readMe/4.Modifiers.md)
+- [Text](https://github.com/siba-x-prasad/ComposePlayground/blob/main/readMe/5.Text.md)
+- [TextFields](https://github.com/siba-x-prasad/ComposePlayground/blob/main/readMe/6.TextField.md)
+- [Button](https://github.com/siba-x-prasad/ComposePlayground/blob/main/readMe/7.Button.md)
+- [Image](https://github.com/siba-x-prasad/ComposePlayground/blob/main/readMe/8.Image.md)
+- [Lazy Row & Column](https://github.com/siba-x-prasad/ComposePlayground/blob/main/readMe/9.LazyRowAndColumn.md)
+- [ScrollView](https://github.com/siba-x-prasad/ComposePlayground/blob/main/readMe/10.ScrollView.md)
+- [Constraint Layout](https://github.com/siba-x-prasad/ComposePlayground/blob/main/readMe/11.ConstraintLayout.md)
+- [Scaffold](https://github.com/siba-x-prasad/ComposePlayground/blob/main/readMe/12.scaffold.md)
+- [State Management](https://github.com/siba-x-prasad/ComposePlayground/blob/main/readMe/13.stateManagement.md)
 - [Scaffold](https://github.com/siba-x-prasad/ComposePlayground/blob/main/readMe/scaffold.md)
 - [State Management](https://github.com/siba-x-prasad/ComposePlayground/blob/main/readMe/stateManagement.md)
-- [Theme](https://github.com/siba-x-prasad/ComposePlayground/blob/main/readMe/theme.md)
+- [Navigation](https://github.com/siba-x-prasad/ComposePlayground/blob/main/readMe/14.Navigation.md)
 - [TopBar & Navigation](https://github.com/siba-x-prasad/ComposePlayground/blob/main/readMe/topAppBarAndBottomNavigastionBar.md)
-
 
 ## Dependencies
 ```
