@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ComposePlayground"
+        tools:targetApi="31">
+        <activity
+            android:name=".youtubeTutor.animation.AnimationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".youtubeTutor.composeEffect.ComposeEffectActivity"
+            android:exported="false" />
+        <activity
+            android:name=".youtubeTutor.constraintslayout.ConstraintLayoutExampleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".youtubeTutor.list.ListExampleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".youtubeTutor.scaffolds.AppBarAndSnackbarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".youtubeTutor.scaffolds.NavigationDrawerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".youtubeTutor.snackbars.SnackbarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".youtubeTutor.btntxtfields.ButtonTextSnackBarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".youtubeTutor.stateManagement.StateManagementActivity"
+            android:exported="false" />
+        <activity
+            android:name=".componentExamples.TextFieldActivity"
+            android:exported="false" />
+        <activity
+            android:name=".youtubeTutor.imageCard.ImageCardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.ComposePlayground">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".navigation.NavigationActivity"/>
+    </application>
+
+</manifest>
