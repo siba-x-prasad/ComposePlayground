@@ -75,8 +75,9 @@ fun MyScreen(list: List<String> = listOf("Hello", "Android")) {
     }
 }
 
+@Preview
 @Composable
-fun Greeting(name: String) {
+fun Greeting(name: String = "Hello") {
 
     var isSelected by remember {
         mutableStateOf(false)
