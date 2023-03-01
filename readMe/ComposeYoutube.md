@@ -16,9 +16,13 @@
 - constrain(createRefFor id)
 
 # Jetpack Compose Effect Handlers
-
+- https://developer.android.com/jetpack/compose/side-effects
 - EffectHandlersTheme
 - LaunchedEffect
+- rememberCoroutineScope
+- rememberUpdatedState
+- DisposableEffect
+- 
 
 ```
 private var i = 0;
@@ -45,7 +49,6 @@ setContent{
 - The above scenario is never recommended to do.
 
 ## LaunchedEffect
-
 - Look into the example ComposeEffectActivity.kt file
 - Find all the side Effect things in
   the [Video](https://www.youtube.com/watch?v=gxWcfz3V2QE&list=PLQkwcJG4YTCSpJ2NLhDTHhi6XBNfk9WiC&index=10)

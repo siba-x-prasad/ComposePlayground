@@ -1,16 +1,17 @@
 package com.swasi.composeplayground.ui
 
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.material3.ExtendedFloatingActionButton
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SnackbarHost
-import androidx.compose.material3.SnackbarHostState
-import androidx.compose.material3.Text
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.launch
 
 /**
@@ -18,7 +19,43 @@ import kotlinx.coroutines.launch
  * siba.x.prasad@gmail.com
  */
 
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun ScaffoldWithTopBar() {
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = {
+                    Text(text = "Top App Bar")
+                },
+                navigationIcon = {
+                    IconButton(onClick = {}) {
+                        Icon(Icons.Filled.ArrowBack, "backIcon")
+                    }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = Color.Blue
+                )
+            )
+        },
+        content = {
+            Column(modifier = Modifier
+                .fillMaxSize()
+                .background(Color(0xff8d6e63)),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
 
+            ) {
+                Text(
+                    text = "Content of the page",
+                    fontSize = 30.sp,
+                    color = Color.White
+                )
+            }
+            it
+        }
+        )
+}
 
 @Composable
 fun ScaffoldSample() {
@@ -42,10 +79,58 @@ fun ScaffoldSample() {
         content = { innerPadding ->
             Text(
                 text = "Body content",
-                modifier = Modifier.padding(innerPadding).fillMaxSize().wrapContentSize()
+                modifier = Modifier
+                    .padding(innerPadding)
+                    .fillMaxSize()
+                    .wrapContentSize()
             )
         }
     )
+}
+
+@Composable
+fun asas(){
+    BottomNavigationItem(icon = {
+        //composable function for menu icon
+    },
+        label = { //composable function for menu title},
+            selected = //mutableState boolean for highlight,
+                onClick = {
+                //menu item click event
+            })
+}
+@Composable
+fun BottomBar() {
+    val selectedIndex = remember { mutableStateOf(0) }
+    BottomNavigation(elevation = 10.dp) {
+
+        BottomNavigationItem(icon = {
+            Icon(imageVector = Icons.Default.Home,"")
+        },
+            label = { Text(text = "Home") },
+            selected = (selectedIndex.value == 0),
+            onClick = {
+                selectedIndex.value = 0
+            })
+
+        BottomNavigationItem(icon = {
+            Icon(imageVector = Icons.Default.Favorite,"")
+        },
+            label = { Text(text = "Favorite") },
+            selected = (selectedIndex.value == 1),
+            onClick = {
+                selectedIndex.value = 1
+            })
+
+        BottomNavigationItem(icon = {
+            Icon(imageVector = Icons.Default.Person,"")
+        },
+            label = { Text(text = "Profile") },
+            selected = (selectedIndex.value == 2),
+            onClick = {
+                selectedIndex.value = 2
+            })
+    }
 }
 
 
@@ -53,4 +138,10 @@ fun ScaffoldSample() {
 @Composable
 fun ScaffoldSamplePreview(){
     ScaffoldSample()
+}
+
+@Preview
+@Composable
+fun ScaffoldWithTopBarPreview(){
+    ScaffoldWithTopBar()
 }
