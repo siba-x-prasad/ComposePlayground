@@ -26,11 +26,12 @@ fun LoginScreen() {
         OutLineTextField()
         AppButton(title = "Login", onClick = {
             Toast.makeText(context, "asdasd", Toast.LENGTH_SHORT).show()
-        }, modifier = Modifier.fillMaxWidth())
+        }, modifier = Modifier.fillMaxWidth(0.5f))
     }
 }
 
-@Preview(name = "LoginScreenPreview", device = "spec:width=411dp,height=891dp",
+@Preview(name = "LoginScreenPreview",
+    device = "spec:width=411dp,height=891dp",
     backgroundColor = 0xFFFF9800
 )
 @Composable
