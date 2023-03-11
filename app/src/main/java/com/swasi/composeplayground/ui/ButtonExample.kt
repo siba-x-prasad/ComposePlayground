@@ -96,10 +96,12 @@ fun ButtonWithCutCornerShape() {
 fun ButtonWithBorder() {
     Button(
         onClick = {
-            //your onclick code
+            // your onclick code
         },
         border = BorderStroke(1.dp, Color.Red),
-        colors = ButtonDefaults.outlinedButtonColors(contentColor = Color.Red, containerColor = Color.Black)
+        colors = ButtonDefaults.outlinedButtonColors(
+            contentColor = Color.Red,
+            containerColor = Color.Black)
     ) {
         Text(text = "Button with border", color = Color.White)
     }
