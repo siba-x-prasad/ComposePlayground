@@ -54,7 +54,7 @@ private fun addOnBoardingScreen(
     navController: NavHostController,
     navGraphBuilder: NavGraphBuilder
 ) {
-    navGraphBuilder.composable(route = MovieNavRoute.Splash.path) {
+    navGraphBuilder.composable(route = MovieNavRoute.OnBoarding.path) {
         OnBoardingScreen(
             onNavigateToSignIn = {
                 navController.navigate(MovieNavRoute.SignIn.path)
