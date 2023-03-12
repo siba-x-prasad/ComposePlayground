@@ -21,6 +21,10 @@ class MovieDbActivity : ComponentActivity() {
 
 @Composable
 private fun MainScreen() {
+//    val activity = LocalContext.current as Activity
+//    LaunchedEffect(activity) {
+//        activity.window.setBackgroundDrawable(BitmapDrawable)
+//    }
     ComposePlaygroundTheme() {
         val navController = rememberNavController()
         MovieNavGraph(navController)

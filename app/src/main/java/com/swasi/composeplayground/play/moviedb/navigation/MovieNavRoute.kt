@@ -5,12 +5,14 @@ sealed class MovieNavRoute(val path: String) {
     object Splash : MovieNavRoute("splash")
 
     object SignIn : MovieNavRoute("signIn")
+    object ForgotPassword : MovieNavRoute("forgotPassword")
 
     object SignUp : MovieNavRoute("signUp")
 
-    object OnBoarding : MovieNavRoute("onboarding")
+    object OnBoarding : MovieNavRoute("onBoarding")
 
     object Home : MovieNavRoute("home")
+    object TvShow : MovieNavRoute("tvShow")
 
     object Profile : MovieNavRoute("profile") {
         val id = "id"

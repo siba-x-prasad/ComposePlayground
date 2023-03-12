@@ -1,17 +1,23 @@
 package com.swasi.composeplayground.components
 
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.KeyboardActionScope
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
@@ -22,41 +28,86 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun AppTextField(
-    text : String = "Hello",
-    hintText : String = "Hint",
-    onValueChange : (String) -> Unit,
+    label: String,
+    keyboardType: KeyboardType = KeyboardType.Text,
+    imeAction: ImeAction = ImeAction.Next,
+    onTextChanged: (String) -> Unit,
+    onNext: ((KeyboardActionScope) -> Unit)? = null,
+    onDone: ((KeyboardActionScope) -> Unit)? = null,
+    isError: Boolean = false,
+    visualTransformation: VisualTransformation = VisualTransformation.None,
     modifier: Modifier = Modifier.padding(0.dp)
-){
+) {
+    var text by remember {
+        mutableStateOf("")
+    }
+
     TextField(
-    value = text,
-    onValueChange = onValueChange,
-        label = {
-            Text(hintText)
+        modifier = Modifier.composed { modifier },
+        value = text,
+        onValueChange = {
+            text = it
+            onTextChanged(it)
         },
-        modifier = Modifier.composed { modifier }
+        label = {
+            Text(label)
+        },
+        keyboardOptions = KeyboardOptions(
+            keyboardType = keyboardType,
+            imeAction = imeAction
+        ),
+        keyboardActions = KeyboardActions(
+            onDone = onDone?.let { it },
+            onNext = onNext?.let { it }
+        ),
+        isError = isError,
+        visualTransformation = visualTransformation
     )
 }
 
 @Composable
 fun AppTextFieldWithIcon(
-    text : String = "Hello",
-    hintText : String = "Hint",
-    onValueChange : (String) -> Unit,
+    label: String,
+    keyboardType: KeyboardType = KeyboardType.Text,
+    imeAction: ImeAction = ImeAction.Next,
+    onTextChanged: (String) -> Unit,
+    onNext: ((KeyboardActionScope) -> Unit)? = null,
+    onDone: ((KeyboardActionScope) -> Unit)? = null,
+    isError: Boolean = false,
+    visualTransformation: VisualTransformation = VisualTransformation.None,
     modifier: Modifier = Modifier.padding(0.dp),
-    icon : ImageVector = Icons.Default.Email,
-    iconColor : Color = Color.Black
-){
+    icon: ImageVector = Icons.Default.Email,
+    iconColor: Color = Color.Black
+) {
+    var text by remember {
+        mutableStateOf("")
+    }
+
     TextField(
-        value = text,
-        onValueChange = onValueChange,
-        label = {
-            Text(hintText)
-        },
         modifier = Modifier.composed { modifier },
+        value = text,
+        onValueChange = {
+            text = it
+            onTextChanged(it)
+        },
+        label = {
+            Text(label)
+        },
+        keyboardOptions = KeyboardOptions(
+            keyboardType = keyboardType,
+            imeAction = imeAction
+        ),
+        keyboardActions = KeyboardActions(
+            onDone = onDone?.let { it },
+            onNext = onNext?.let { it }
+        ),
+        isError = isError,
+        visualTransformation = visualTransformation,
         leadingIcon = {
-           Icon(imageVector = icon, contentDescription = text,
-           tint = iconColor
-               )
+            Icon(
+                imageVector = icon, contentDescription = text,
+                tint = iconColor
+            )
         }
     )
 }
@@ -64,39 +115,84 @@ fun AppTextFieldWithIcon(
 
 @Composable
 fun AppOutLinedTextField(
-    text : String = "Hello",
-    hintText : String = "Hint",
-    onValueChange : (String) -> Unit,
+    label: String,
+    keyboardType: KeyboardType = KeyboardType.Text,
+    imeAction: ImeAction = ImeAction.Next,
+    onTextChanged: (String) -> Unit,
+    onNext: ((KeyboardActionScope) -> Unit)? = null,
+    onDone: ((KeyboardActionScope) -> Unit)? = null,
+    isError: Boolean = false,
+    visualTransformation: VisualTransformation = VisualTransformation.None,
     modifier: Modifier = Modifier.padding(0.dp)
-){
+) {
+    var text by remember {
+        mutableStateOf("")
+    }
     OutlinedTextField(
+        modifier = Modifier.composed { modifier },
         value = text,
-        onValueChange = onValueChange,
-        label = {
-            Text(hintText)
+        onValueChange = {
+            text = it
+            onTextChanged(it)
         },
-        modifier = Modifier.composed { modifier }
+        label = {
+            Text(label)
+        },
+        keyboardOptions = KeyboardOptions(
+            keyboardType = keyboardType,
+            imeAction = imeAction
+        ),
+        keyboardActions = KeyboardActions(
+            onDone = onDone?.let { it },
+            onNext = onNext?.let { it }
+        ),
+        isError = isError,
+        visualTransformation = visualTransformation
     )
 }
 
 @Composable
 fun AppOutLinedTextFieldWithIcon(
-    text : String = "Hello",
-    hintText : String = "Hint",
-    onValueChange : (String) -> Unit,
+    label: String,
+    keyboardType: KeyboardType = KeyboardType.Text,
+    imeAction: ImeAction = ImeAction.Next,
+    onTextChanged: (String) -> Unit,
+    onNext: ((KeyboardActionScope) -> Unit)? = null,
+    onDone: ((KeyboardActionScope) -> Unit)? = null,
+    isError: Boolean = false,
+    visualTransformation: VisualTransformation = VisualTransformation.None,
     modifier: Modifier = Modifier.padding(0.dp),
-    icon : ImageVector = Icons.Default.Email,
-    iconColor : Color = Color.Black
-){
+    icon: ImageVector = Icons.Default.Email,
+    iconColor: Color = Color.Black
+) {
+
+    var text by remember {
+        mutableStateOf("")
+    }
+
     OutlinedTextField(
-        value = text,
-        onValueChange = onValueChange,
-        label = {
-            Text(hintText)
-        },
         modifier = Modifier.composed { modifier },
+        value = text,
+        onValueChange = {
+            text = it
+            onTextChanged(it)
+        },
+        label = {
+            Text(label)
+        },
+        keyboardOptions = KeyboardOptions(
+            keyboardType = keyboardType,
+            imeAction = imeAction
+        ),
+        keyboardActions = KeyboardActions(
+            onDone = onDone?.let { it },
+            onNext = onNext?.let { it }
+        ),
+        isError = isError,
+        visualTransformation = visualTransformation,
         leadingIcon = {
-            Icon(imageVector = icon, contentDescription = text,
+            Icon(
+                imageVector = icon, contentDescription = text,
                 tint = iconColor
             )
         }
@@ -106,7 +202,7 @@ fun AppOutLinedTextFieldWithIcon(
 @Preview
 @Composable
 fun AppTextFieldPreview(){
-    AppTextField(onValueChange = {
+    AppTextField(label = "", onTextChanged = {
 
     })
 }
@@ -114,7 +210,7 @@ fun AppTextFieldPreview(){
 @Preview
 @Composable
 fun AppTextFieldWithIconPreview(){
-    AppTextFieldWithIcon(onValueChange = {
+    AppTextFieldWithIcon(label = "", onTextChanged = {
 
     })
 }
@@ -122,7 +218,7 @@ fun AppTextFieldWithIconPreview(){
 @Preview
 @Composable
 fun AppOutLinedTextFieldPreview(){
-    AppOutLinedTextField(onValueChange = {
+    AppOutLinedTextField(label = "", onTextChanged = {
 
     })
 }
@@ -130,7 +226,7 @@ fun AppOutLinedTextFieldPreview(){
 @Preview
 @Composable
 fun AppOutLinedTextFieldWithIconPreview(){
-    AppOutLinedTextFieldWithIcon(onValueChange = {
+    AppOutLinedTextFieldWithIcon(label = "", onTextChanged = {
 
     })
 }

@@ -2,8 +2,6 @@ package com.swasi.composeplayground.navigation.navigation
 
 sealed class NavRoute(val path: String) {
 
-    object OnBoarding: NavRoute("onboarding")
-
     object Login: NavRoute("login")
 
     object Home: NavRoute("home")

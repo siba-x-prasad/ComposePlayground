@@ -7,12 +7,15 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.swasi.composeplayground.navigation.screens.HomeScreen
-import com.swasi.composeplayground.navigation.screens.LoginScreen
 import com.swasi.composeplayground.navigation.screens.ProfileScreen
 import com.swasi.composeplayground.navigation.screens.SearchScreen
+import com.swasi.composeplayground.play.moviedb.forgotpwd.ForgotPasswordBottomSheet
+import com.swasi.composeplayground.play.moviedb.home.MovieHomeScreen
 import com.swasi.composeplayground.play.moviedb.onboarding.OnBoardingScreen
+import com.swasi.composeplayground.play.moviedb.signin.SignInScreen
+import com.swasi.composeplayground.play.moviedb.signup.SignUpScreen
 import com.swasi.composeplayground.play.moviedb.splash.SplashScreen
+import com.swasi.composeplayground.play.moviedb.tvshow.TvShowScreen
 
 @Composable
 fun MovieNavGraph(navController: NavHostController) {
@@ -27,9 +30,13 @@ fun MovieNavGraph(navController: NavHostController) {
 
         addSignInScreen(navController, this)
 
+        addForgotPasswordScreen(navController, this)
+
         addSignUpScreen(navController, this)
 
         addHomeScreen(navController, this)
+
+        addTvShowScreen(navController, this)
 
         addProfileScreen(navController, this)
 
@@ -71,9 +78,15 @@ private fun addSignInScreen(
     navGraphBuilder: NavGraphBuilder
 ) {
     navGraphBuilder.composable(route = MovieNavRoute.SignIn.path) {
-        LoginScreen(
-            navigateToHome = {
-                navController.navigate(MovieNavRoute.Home.path)
+        SignInScreen(
+            onNavigateToHome = {
+                navController.navigate(MovieNavRoute.TvShow.path)
+            },
+            onNavigateToSignUp = {
+                navController.navigate(MovieNavRoute.SignUp.path)
+            },
+            onNavigateToForgotPassword = {
+                navController.navigate(MovieNavRoute.ForgotPassword.path)
             }
         )
     }
@@ -83,12 +96,24 @@ private fun addSignUpScreen(
     navController: NavHostController,
     navGraphBuilder: NavGraphBuilder
 ) {
-    navGraphBuilder.composable(route = MovieNavRoute.SignIn.path) {
-        LoginScreen(
-            navigateToHome = {
+    navGraphBuilder.composable(route = MovieNavRoute.SignUp.path) {
+        SignUpScreen(
+            onNavigateToHome = {
                 navController.navigate(MovieNavRoute.Home.path)
+            },
+            onNavigateToSIgnIn = {
+                navController.navigate(MovieNavRoute.SignIn.path)
             }
         )
+    }
+}
+
+private fun addForgotPasswordScreen(
+    navController: NavHostController,
+    navGraphBuilder: NavGraphBuilder
+) {
+    navGraphBuilder.composable(route = MovieNavRoute.ForgotPassword.path) {
+        ForgotPasswordBottomSheet()
     }
 }
 
@@ -98,21 +123,23 @@ private fun addHomeScreen(
 ) {
     navGraphBuilder.composable(route = MovieNavRoute.Home.path) {
 
-        HomeScreen(
-            navigateToProfile = { id, showDetails ->
-                navController.navigate(
-                    MovieNavRoute.Profile.withArgs(
-                        id.toString(),
-                        showDetails.toString()
-                    )
-                )
+        MovieHomeScreen(
+            onNavigateToProfile = {
+
             },
-            navigateToSearch = { query ->
-                navController.navigate(MovieNavRoute.Search.withArgs(query))
-            },
-            popBackStack = { navController.popBackStack() },
-            popUpToLogin = { popUpToLogin(navController) },
+            onNavigateToTvShow = {
+                navController.navigate(MovieNavRoute.TvShow.path)
+            }
         )
+    }
+}
+
+private fun addTvShowScreen(
+    navController: NavHostController,
+    navGraphBuilder: NavGraphBuilder
+) {
+    navGraphBuilder.composable(route = MovieNavRoute.TvShow.path) {
+        TvShowScreen()
     }
 }
 
