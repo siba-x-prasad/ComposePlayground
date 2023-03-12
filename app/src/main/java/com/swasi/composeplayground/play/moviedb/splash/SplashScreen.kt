@@ -1,9 +1,11 @@
 package com.swasi.composeplayground.play.moviedb.splash
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -27,6 +29,10 @@ fun SplashScreen(
     viewModel: SplashViewModel = hiltViewModel(),
     onNavigateToOnBoarding: () -> Unit
 ) {
+    DisposableEffect(Unit) {
+        Log.i("SplashScreen", "Splash Screen Composed")
+        onDispose { Log.i("SplashScreen", "Splash Screen  DISPOSED") }
+    }
     ComposePlaygroundTheme(darkTheme = false) {
         Surface(
             modifier = Modifier.fillMaxSize(),
@@ -40,7 +46,7 @@ fun SplashScreen(
                     .padding(10.dp)
             ) {
                 AppImageView(
-                    painter = painterResource(id = R.drawable.apple),
+                    painter = painterResource(id = R.drawable.jet_pack_compose),
                     contentDescription = "splashImage",
                     modifier = Modifier
                         .width(100.dp)
@@ -53,9 +59,9 @@ fun SplashScreen(
                     )
                 )
 
-                if (viewModel.isLoaded.value) {
-                    onNavigateToOnBoarding()
-                }
+//                if (viewModel.isLoaded.value) {
+//                    onNavigateToOnBoarding()
+//                }
 
                 AppButton(
                     text = "Skip", onClick = {

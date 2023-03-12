@@ -64,7 +64,9 @@ private fun addOnBoardingScreen(
     navGraphBuilder.composable(route = MovieNavRoute.OnBoarding.path) {
         OnBoardingScreen(
             onNavigateToSignIn = {
-                navController.navigate(MovieNavRoute.SignIn.path)
+                navController.navigate(MovieNavRoute.SignIn.path) {
+                    popUpTo(MovieNavRoute.OnBoarding.path)
+                }
             },
             onNavigateToSignUp = {
                 navController.navigate(MovieNavRoute.SignUp.path)
@@ -80,7 +82,7 @@ private fun addSignInScreen(
     navGraphBuilder.composable(route = MovieNavRoute.SignIn.path) {
         SignInScreen(
             onNavigateToHome = {
-                navController.navigate(MovieNavRoute.TvShow.path)
+                navController.navigate(MovieNavRoute.Home.path)
             },
             onNavigateToSignUp = {
                 navController.navigate(MovieNavRoute.SignUp.path)

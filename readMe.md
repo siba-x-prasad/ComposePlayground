@@ -29,6 +29,7 @@
 - [TopBar & Navigation](https://github.com/siba-x-prasad/ComposePlayground/blob/main/readMe/topAppBarAndBottomNavigastionBar.md)
 
 ## Dependencies
+
 ```
 And also you need to add some dependencies for Jetpack Compose. 
 
@@ -39,5 +40,26 @@ implementation "androidx.compose.material:material:$compose_version"
 implementation "androidx.compose.ui:ui-tooling:$compose_version"
 ```
 
+## Screenshots of the Weather Application
+
+<table>
+<tr>
+<td>
+  <img src="https://github.com/siba-x-prasad/ComposePlayground/blob/screenshots/ss1.png" width="170" height="300" />
+ </td>
+<td>
+ <img src="https://github.com/siba-x-prasad/ComposePlayground/blob/screenshots/ss2.png" width="170" height="300" /> 
+</td>
+  <td>
+  <img src="https://github.com/siba-x-prasad/ComposePlayground/blob/screenshots/ss3.png" width="170" height="300" />
+ </td>
+   <td>
+  <img src="https://github.com/siba-x-prasad/ComposePlayground/blob/screenshots/ss4.png" width="170" height="300" />
+ </td>
+  <td>
+  <img src="https://github.com/siba-x-prasad/ComposePlayground/blob/screenshots/ss5.png" width="170" height="300" />
+ </td>
+</tr>
+</table> 
 
 

@@ -35,12 +35,12 @@ fun OnBoardingScreen(
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(Color.Gray),
+                    .background(Color.White),
                 verticalArrangement = Arrangement.SpaceAround,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 AppImageView(
-                    painter = painterResource(id = R.drawable.apple),
+                    painter = painterResource(id = R.drawable.jet_pack_compose),
                     contentDescription = "Apple",
                     modifier = Modifier.fillMaxSize(0.5f)
                 )

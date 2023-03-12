@@ -2,7 +2,10 @@ package com.swasi.composeplayground.play.moviedb.home
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.Scaffold
+import androidx.compose.material.TopAppBar
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -24,37 +27,55 @@ fun MovieHomeScreen(
     onNavigateToProfile: () -> Unit,
     onNavigateToTvShow: () -> Unit
 ) {
-    ComposePlaygroundTheme(darkTheme = false) {
-        Surface(
-            modifier = Modifier.fillMaxSize(),
-            color = Color.White
-        ) {
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(Color.Gray)
-                    .padding(10.dp),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
-            ) {
 
-                Spacer(modifier = Modifier.height(10.dp))
-                AppButton(text = "Movie Home Screen", onClick = {
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = {
+                    Row {
+                        Text(
+                            "Home Screen",
+                            color = Color.White
+                        )
+                    }
                 })
-                Spacer(modifier = Modifier.height(10.dp))
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.SpaceAround
+        },
+        content = {
+
+            ComposePlaygroundTheme(darkTheme = false) {
+                Surface(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(it),
+                    color = Color.White
                 ) {
-                    AppOutlinedButton(text = "TvShow", onClick = {
-                        onNavigateToTvShow()
-                    })
-                    AppOutlinedButton(text = "Profile", onClick = {
-                        onNavigateToProfile()
-                    })
+                    Column(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(Color.White)
+                            .padding(10.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center
+                    ) {
+
+                        Spacer(modifier = Modifier.height(10.dp))
+                        AppButton(text = "Movie Home Screen", onClick = {
+                        })
+                        Spacer(modifier = Modifier.height(10.dp))
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.SpaceAround
+                        ) {
+                            AppOutlinedButton(text = "TvShow", onClick = {
+                                onNavigateToTvShow()
+                            })
+                            AppOutlinedButton(text = "Profile", onClick = {
+                                onNavigateToProfile()
+                            })
+                        }
+                    }
                 }
             }
-        }
-    }
+        })
 }

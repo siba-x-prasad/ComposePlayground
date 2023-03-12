@@ -2,7 +2,15 @@ package com.swasi.composeplayground.play.moviedb.signup
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.Scaffold
+import androidx.compose.material.TopAppBar
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Phone
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -12,7 +20,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.swasi.composeplayground.components.AppButton
-import com.swasi.composeplayground.components.AppOutLinedTextField
+import com.swasi.composeplayground.components.AppOutLinedTextFieldWithIcon
 import com.swasi.composeplayground.components.AppOutlinedButton
 import com.swasi.composeplayground.components.ProgressIndicator
 import com.swasi.composeplayground.ui.theme.ComposePlaygroundTheme
@@ -32,52 +40,74 @@ fun SignUpScreen(
     var emailState = ""
     var mobileState = ""
     var passwordState = ""
-    ComposePlaygroundTheme(darkTheme = false) {
-        Surface(
-            modifier = Modifier.fillMaxSize(),
-            color = Color.White
-        ) {
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(Color.Gray)
-                    .padding(10.dp),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
-            ) {
-                AppOutLinedTextField(label = "Name", onTextChanged = {
-                    nameState = it
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = {
+                    Row {
+                        Text(
+                            "Sign Up",
+                            color = Color.White
+                        )
+                    }
                 })
-                Spacer(modifier = Modifier.height(10.dp))
-                AppOutLinedTextField(label = "Email", onTextChanged = {
-                    emailState = it
-                })
-                Spacer(modifier = Modifier.height(10.dp))
-                AppOutLinedTextField(label = "Mobile Number", onTextChanged = {
-                    mobileState = it
-                })
-                Spacer(modifier = Modifier.height(10.dp))
-                AppOutLinedTextField(
-                    label = "Password", onTextChanged = {
-                        passwordState = it
-                    },
-                    visualTransformation = PasswordVisualTransformation()
-                )
-                Spacer(modifier = Modifier.height(10.dp))
-                AppButton(text = "Signup", onClick = {
-                    viewModel.signUp()
-                    onNavigateToHome()
-                })
-                if (viewModel.isLoading.value) {
-                    ProgressIndicator()
+        },
+        content = {
+            ComposePlaygroundTheme(darkTheme = false) {
+                Surface(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(it),
+                    color = Color.White
+                ) {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(Color.White)
+                            .padding(10.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center
+                    ) {
+                        AppOutLinedTextFieldWithIcon(label = "Name",
+                            icon = Icons.Default.Person, onTextChanged = {
+                                nameState = it
+                            })
+                        Spacer(modifier = Modifier.height(10.dp))
+                        AppOutLinedTextFieldWithIcon(label = "Email",
+                            icon = Icons.Default.Email, onTextChanged = {
+                                emailState = it
+                            })
+                        Spacer(modifier = Modifier.height(10.dp))
+                        AppOutLinedTextFieldWithIcon(label = "Mobile Number",
+                            icon = Icons.Default.Phone,
+                            onTextChanged = {
+                                mobileState = it
+                            })
+                        Spacer(modifier = Modifier.height(10.dp))
+                        AppOutLinedTextFieldWithIcon(
+                            label = "Password",
+                            icon = Icons.Default.Settings,
+                            onTextChanged = {
+                                passwordState = it
+                            },
+                            visualTransformation = PasswordVisualTransformation()
+                        )
+                        Spacer(modifier = Modifier.height(10.dp))
+                        AppButton(text = "Signup", onClick = {
+                            viewModel.signUp()
+                            onNavigateToHome()
+                        })
+                        if (viewModel.isLoading.value) {
+                            ProgressIndicator()
+                        }
+                        Spacer(modifier = Modifier.height(10.dp))
+                        AppOutlinedButton(text = "Sign In", onClick = {
+                            onNavigateToSIgnIn()
+                        })
+                    }
                 }
-                Spacer(modifier = Modifier.height(10.dp))
-                AppOutlinedButton(text = "Sign In", onClick = {
-                    onNavigateToSIgnIn()
-                })
             }
-        }
-    }
+        })
 }
 
 @Preview

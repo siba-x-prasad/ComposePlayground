@@ -25,6 +25,7 @@ private fun MainScreen() {
 //    LaunchedEffect(activity) {
 //        activity.window.setBackgroundDrawable(BitmapDrawable)
 //    }
+
     ComposePlaygroundTheme() {
         val navController = rememberNavController()
         MovieNavGraph(navController)
