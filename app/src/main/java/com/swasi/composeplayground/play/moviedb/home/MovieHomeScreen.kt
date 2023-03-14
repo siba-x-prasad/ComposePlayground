@@ -24,7 +24,7 @@ import com.swasi.composeplayground.ui.theme.ComposePlaygroundTheme
 @Composable
 fun MovieHomeScreen(
     viewModel: MovieHomeViewModel = hiltViewModel(),
-    onNavigateToProfile: () -> Unit,
+    onNavigateToMovieScreen: () -> Unit,
     onNavigateToTvShow: () -> Unit
 ) {
 
@@ -67,12 +67,21 @@ fun MovieHomeScreen(
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.SpaceAround
                         ) {
-                            AppOutlinedButton(text = "TvShow", onClick = {
-                                onNavigateToTvShow()
-                            })
-                            AppOutlinedButton(text = "Profile", onClick = {
-                                onNavigateToProfile()
-                            })
+                            AppOutlinedButton(
+                                text = "TvShow", onClick = {
+                                    onNavigateToTvShow()
+                                },
+                                modifier = Modifier
+                                    .width(100.dp)
+                                    .height(100.dp)
+                            )
+                            AppOutlinedButton(text = "Movie List",
+                                modifier = Modifier
+                                    .width(100.dp)
+                                    .height(100.dp),
+                                onClick = {
+                                    onNavigateToMovieScreen()
+                                })
                         }
                     }
                 }

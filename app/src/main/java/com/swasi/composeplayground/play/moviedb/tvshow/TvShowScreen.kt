@@ -22,11 +22,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import coil.compose.AsyncImage
+import coil.compose.rememberAsyncImagePainter
 import com.swasi.composeplayground.R
 import com.swasi.composeplayground.components.ProgressIndicator
 import com.swasi.composeplayground.network.RestConfig
-import com.swasi.composeplayground.network.response.PopularTvResults
+import com.swasi.composeplayground.network.response.ItemResult
 
 /**
  * Created by Sibaprasad Mohanty on 11/03/2023.
@@ -45,7 +45,7 @@ fun TvShowScreen(viewModel: TvShowViewModel = hiltViewModel()) {
                 title = {
                     Row {
                         Text(
-                            "Fruit List",
+                            "Popular Tv Show",
                             color = Color.White
                         )
                     }
@@ -92,7 +92,7 @@ fun TvShowScreen(viewModel: TvShowViewModel = hiltViewModel()) {
 data class FruitData(val fruitName: String, val image: Int)
 
 @Composable
-fun TvShowList(fruitList: MutableList<PopularTvResults>) {
+fun TvShowList(fruitList: MutableList<ItemResult>) {
 
     LazyColumn(
         modifier = Modifier
@@ -107,7 +107,7 @@ fun TvShowList(fruitList: MutableList<PopularTvResults>) {
 }
 
 @Composable
-fun TvShowItemRow(model: PopularTvResults) {
+fun TvShowItemRow(model: ItemResult) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
@@ -116,23 +116,16 @@ fun TvShowItemRow(model: PopularTvResults) {
             .background(colorResource(id = R.color.col_063041))
             .padding(5.dp)
     ) {
-//        Image(
-//            painter = painterResource(id = model.image),
-//            contentDescription = "",
-//            contentScale = ContentScale.Crop,
-//            modifier = Modifier
-//                .size(100.dp)
-//                .padding(5.dp)
-//        )
         val imageUrl = RestConfig.BASE_IMAGE_URL + model.posterPath
         Log.i("Image Url", imageUrl)
-        AsyncImage(
-            model = imageUrl, contentDescription = model.name,
+        Image(
+            painter = rememberAsyncImagePainter(imageUrl),
+            contentDescription = model.name,
+            contentScale = ContentScale.Crop,
             modifier = Modifier
                 .size(100.dp)
                 .padding(5.dp)
         )
-
         Text(
             text = model.name!!,
             fontSize = 24.sp,

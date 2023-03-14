@@ -1,17 +1,21 @@
 package com.swasi.composeplayground.network.response
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import com.swasi.composeplayground.network.RestConfig
+import kotlinx.android.parcel.Parcelize
 
+
+@Parcelize
 data class PopularTvShowResponse(
     @SerializedName("page") var page: Int? = null,
-    @SerializedName("results") var results: ArrayList<PopularTvResults> = arrayListOf(),
+    @SerializedName("results") var results: ArrayList<ItemResult> = arrayListOf(),
     @SerializedName("total_pages") var totalPages: Int? = null,
     @SerializedName("total_results") var totalResults: Int? = null
-)
+) : Parcelable
 
-
-data class PopularTvResults(
+@Parcelize
+data class ItemResult(
     @SerializedName("backdrop_path") var backdropPath: String? = null,
     @SerializedName("first_air_date") var firstAirDate: String? = null,
     @SerializedName("genre_ids") var genreIds: ArrayList<Int> = arrayListOf(),
@@ -25,6 +29,6 @@ data class PopularTvResults(
     @SerializedName("poster_path") var posterPath: String? = null,
     @SerializedName("vote_average") var voteAverage: Double? = null,
     @SerializedName("vote_count") var voteCount: Int? = null
-) {
+) : Parcelable {
     var fullImageUrl = "${RestConfig.BASE_IMAGE_URL}${posterPath}"
 }

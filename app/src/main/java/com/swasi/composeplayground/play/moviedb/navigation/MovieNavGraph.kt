@@ -9,8 +9,10 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.swasi.composeplayground.navigation.screens.ProfileScreen
 import com.swasi.composeplayground.navigation.screens.SearchScreen
+import com.swasi.composeplayground.play.moviedb.details.MovieDetailsScreen
 import com.swasi.composeplayground.play.moviedb.forgotpwd.ForgotPasswordBottomSheet
 import com.swasi.composeplayground.play.moviedb.home.MovieHomeScreen
+import com.swasi.composeplayground.play.moviedb.movies.MovieScreen
 import com.swasi.composeplayground.play.moviedb.onboarding.OnBoardingScreen
 import com.swasi.composeplayground.play.moviedb.signin.SignInScreen
 import com.swasi.composeplayground.play.moviedb.signup.SignUpScreen
@@ -37,6 +39,10 @@ fun MovieNavGraph(navController: NavHostController) {
         addHomeScreen(navController, this)
 
         addTvShowScreen(navController, this)
+
+        addMovieScreen(navController, this)
+
+        addMovieDetailsScreen(navController, this)
 
         addProfileScreen(navController, this)
 
@@ -126,8 +132,8 @@ private fun addHomeScreen(
     navGraphBuilder.composable(route = MovieNavRoute.Home.path) {
 
         MovieHomeScreen(
-            onNavigateToProfile = {
-
+            onNavigateToMovieScreen = {
+                navController.navigate(MovieNavRoute.MovieScreen.path)
             },
             onNavigateToTvShow = {
                 navController.navigate(MovieNavRoute.TvShow.path)
@@ -142,6 +148,52 @@ private fun addTvShowScreen(
 ) {
     navGraphBuilder.composable(route = MovieNavRoute.TvShow.path) {
         TvShowScreen()
+    }
+}
+
+private fun addMovieScreen(
+    navController: NavHostController,
+    navGraphBuilder: NavGraphBuilder
+) {
+    navGraphBuilder.composable(route = MovieNavRoute.MovieScreen.path) {
+        MovieScreen(navigateToMovieDetails = { name, posterPath ->
+            navController.navigate(
+                MovieNavRoute.MovieDetails.withArgs(
+                    name,
+                    posterPath
+                )
+            )
+        })
+    }
+}
+
+private fun addMovieDetailsScreen(
+    navController: NavHostController,
+    navGraphBuilder: NavGraphBuilder
+) {
+    navGraphBuilder.composable(
+        route = MovieNavRoute.MovieDetails.withArgsFormat(
+            MovieNavRoute.MovieDetails.name,
+            MovieNavRoute.MovieDetails.posterImage
+        ),
+        arguments = listOf(
+            navArgument(MovieNavRoute.MovieDetails.name) {
+                type = NavType.StringType
+            },
+            navArgument(MovieNavRoute.MovieDetails.posterImage) {
+                type = NavType.StringType
+            }
+        )
+    ) { navBackStackEntry ->
+
+        val args = navBackStackEntry.arguments
+
+        MovieDetailsScreen(
+            name = args?.getString(MovieNavRoute.MovieDetails.name),
+            posterImage = args?.getString(MovieNavRoute.MovieDetails.posterImage),
+            popBackStack = { navController.popBackStack() },
+            popUpToLogin = { popUpToLogin(navController) }
+        )
     }
 }
 

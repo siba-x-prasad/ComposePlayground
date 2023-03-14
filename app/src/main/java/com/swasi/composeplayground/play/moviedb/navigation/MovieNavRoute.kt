@@ -13,6 +13,12 @@ sealed class MovieNavRoute(val path: String) {
 
     object Home : MovieNavRoute("home")
     object TvShow : MovieNavRoute("tvShow")
+    object MovieScreen : MovieNavRoute("Movie")
+
+    object MovieDetails : MovieNavRoute("movieDetails") {
+        val name = "name"
+        val posterImage = "posterImage"
+    }
 
     object Profile : MovieNavRoute("profile") {
         val id = "id"

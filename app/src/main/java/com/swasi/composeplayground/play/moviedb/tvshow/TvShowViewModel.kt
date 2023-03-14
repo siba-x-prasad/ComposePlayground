@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.swasi.composeplayground.R
 import com.swasi.composeplayground.network.MovieDbApiService
-import com.swasi.composeplayground.network.response.PopularTvResults
+import com.swasi.composeplayground.network.response.ItemResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -27,14 +27,14 @@ import javax.inject.Inject
 @HiltViewModel
 class TvShowViewModel @Inject constructor(private val apiService: MovieDbApiService) : ViewModel() {
     var isLoading = mutableStateOf(false)
-    var movieListResponse: List<PopularTvResults> by mutableStateOf(listOf())
+    var movieListResponse: List<ItemResult> by mutableStateOf(listOf())
     var fruitList: List<FruitData> = getFruitListFromServer()
     var errorMessage: String by mutableStateOf("")
 
     sealed class State {
         object Loading : State()
         object Error : State()
-        data class Data(val data: List<PopularTvResults>) : State()
+        data class Data(val data: List<ItemResult>) : State()
     }
 
     private var _tvSHowState = MutableStateFlow<State>(State.Loading)

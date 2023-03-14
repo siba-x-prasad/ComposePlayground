@@ -2,7 +2,6 @@ package com.swasi.composeplayground.network
 
 import com.swasi.composeplayground.network.response.MovieResponse
 import com.swasi.composeplayground.network.response.PopularTvShowResponse
-import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -24,9 +23,16 @@ interface MovieDbApiService {
         @Query("page") page: Int
     ): PopularTvShowResponse
 
+    // https://api.themoviedb.org/3/movie/popular?
+    @GET("movie/popular")
+    suspend fun getPopularMovies(
+        @Query("api_key") apiKey: String = RestConfig.API_TOKEN,
+        @Query("language") language: String = RestConfig.LANGUAGE
+    ): MovieResponse
+
     @GET("upcoming")
     suspend fun getUpComingMovies(
-        @Query("api_key") apiKey: String,
-    ): Response<MovieResponse>
+        @Query("api_key") apiKey: String = RestConfig.API_TOKEN
+    ): MovieResponse
 
 }
