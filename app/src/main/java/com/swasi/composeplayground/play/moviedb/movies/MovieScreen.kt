@@ -10,7 +10,9 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Scaffold
 import androidx.compose.material.TopAppBar
 import androidx.compose.material3.Text
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -22,6 +24,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberAsyncImagePainter
 import com.swasi.composeplayground.R
+import com.swasi.composeplayground.components.AppButton
 import com.swasi.composeplayground.components.ProgressIndicator
 import com.swasi.composeplayground.network.RestConfig
 import com.swasi.composeplayground.network.response.MovieData
@@ -38,13 +41,29 @@ fun MovieScreen(
     navigateToMovieDetails: (String, String) -> Unit,
 ) {
 
-    var onClickForChild by remember {
-        mutableStateOf({})
-    }
-
     LaunchedEffect(Unit, block = {
         viewModel.getPopularMovies()
     })
+
+
+//    var onClickForChild by remember {
+//        mutableStateOf({})
+//    }
+//
+//    LaunchedEffect(Unit, block = {
+//
+//    })
+//
+//    LaunchedEffect(key1 = ""){
+//        viewModel.eventFlow.collectLatest {
+//            when (it) {
+//                is MovieData -> {
+//                    navigateToMovieDetails(it.title, it.poster_path)
+//                }
+//            }
+//        }
+//    }
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -58,35 +77,38 @@ fun MovieScreen(
                 })
         }
     ) {
-        when (val state = viewModel.movieListState.collectAsState().value) {
-            is MovieViewModel.State.Error -> {
-                Text(state.error, Modifier.fillMaxSize())
+        Column() {
+            AppButton(text = "Movie Details", modifier = Modifier.fillMaxWidth()) {
+                navigateToMovieDetails("Siba", "kjhkhkjhk")
             }
-            MovieViewModel.State.Loading -> {
-                Box(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .background(Color.Gray)
-                        .padding(10.dp),
-                    contentAlignment = Alignment.Center
-                ) {
-                    ProgressIndicator()
+            when (val state = viewModel.movieListState.collectAsState().value) {
+                is MovieViewModel.State.Error -> {
+                    Text(state.error, Modifier.fillMaxSize())
                 }
-            }
-            is MovieViewModel.State.Data -> {
-                Column(
-                    modifier = Modifier
-                        .padding(it)
-                        .background(Color.Gray)
-                        .padding(2.dp)
-                ) {
-                    LazyColumn(
-                        modifier = Modifier.fillMaxHeight(),
-                        verticalArrangement = Arrangement.spacedBy(1.dp)
+                MovieViewModel.State.Loading -> {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(Color.Gray)
+                            .padding(10.dp),
+                        contentAlignment = Alignment.Center
                     ) {
-                        items(state.data) { movie ->
-                            MovieItemRow(movie) { name, path ->
-                                navigateToMovieDetails(name, path)
+                        ProgressIndicator()
+                    }
+                }
+                is MovieViewModel.State.Data -> {
+                    Column(
+                        modifier = Modifier
+                            .padding(it)
+                            .background(Color.Gray)
+                            .padding(2.dp)
+                    ) {
+                        LazyColumn(
+                            modifier = Modifier.fillMaxHeight(),
+                            verticalArrangement = Arrangement.spacedBy(1.dp)
+                        ) {
+                            items(state.data) { movie ->
+                                MovieItemRow(movie, navigateToMovieDetails)
                             }
                         }
                     }
@@ -105,9 +127,7 @@ fun MovieItemRow(model: MovieData, onClick: (String, String) -> Unit) {
             .fillMaxWidth()
             .background(colorResource(id = R.color.col_063041))
             .padding(5.dp)
-            .clickable {
-                onClick(model.title, model.poster_path)
-            }
+            .clickable(onClick = { onClick(model.title, model.poster_path) })
     ) {
         val imageUrl = RestConfig.BASE_IMAGE_URL + model.poster_path
         Log.i("Image Url", imageUrl)

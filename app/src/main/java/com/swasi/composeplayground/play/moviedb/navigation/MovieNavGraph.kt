@@ -156,14 +156,15 @@ private fun addMovieScreen(
     navGraphBuilder: NavGraphBuilder
 ) {
     navGraphBuilder.composable(route = MovieNavRoute.MovieScreen.path) {
-        MovieScreen(navigateToMovieDetails = { name, posterPath ->
-            navController.navigate(
-                MovieNavRoute.MovieDetails.withArgs(
-                    name,
-                    posterPath
+        MovieScreen(
+            navigateToMovieDetails = { name, posterPath ->
+                navController.navigate(
+                    MovieNavRoute.MovieDetails.withArgs(
+                        name,
+                        posterPath
+                    )
                 )
-            )
-        })
+            })
     }
 }
 

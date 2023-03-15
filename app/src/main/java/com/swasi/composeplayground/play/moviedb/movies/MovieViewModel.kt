@@ -5,7 +5,9 @@ import androidx.lifecycle.viewModelScope
 import com.swasi.composeplayground.network.MovieDbApiService
 import com.swasi.composeplayground.network.response.MovieData
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -20,6 +22,16 @@ import javax.inject.Inject
 @HiltViewModel
 class MovieViewModel @Inject constructor(private val apiService: MovieDbApiService) : ViewModel() {
 
+    private val _eventFlow = MutableSharedFlow<MovieData>()
+    val eventFlow = _eventFlow.asSharedFlow()
+    private fun emitEvent(event: MovieData) {
+        viewModelScope.launch { _eventFlow.emit(event) }
+    }
+
+    private fun updateEmitEvent(event: MovieData) {
+    }
+
+
     sealed class State {
         object Loading : State()
         data class Error(val error: String) : State()
@@ -29,6 +41,9 @@ class MovieViewModel @Inject constructor(private val apiService: MovieDbApiServi
     private var _movieListState = MutableStateFlow<State>(State.Loading)
     val movieListState = _movieListState.asStateFlow()
 
+    fun navigateToDetailsScreen(name: String, posterImage: String) {
+
+    }
 
     fun getPopularMovies() {
         _movieListState.value = State.Loading
