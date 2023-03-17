@@ -164,7 +164,16 @@ private fun addMovieScreen(
                         posterPath
                     )
                 )
-            })
+            },
+            navigateToDetails = { name, posterPath ->
+                navController.navigate(
+                    MovieNavRoute.MovieDetails.withArgs(
+                        name,
+                        posterPath
+                    )
+                )
+            }
+        )
     }
 }
 

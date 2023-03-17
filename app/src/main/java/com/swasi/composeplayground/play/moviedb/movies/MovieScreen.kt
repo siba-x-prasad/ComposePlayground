@@ -10,9 +10,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Scaffold
 import androidx.compose.material.TopAppBar
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -41,7 +39,15 @@ private val TAG = "MovieScreen"
 fun MovieScreen(
     viewModel: MovieViewModel = hiltViewModel(),
     navigateToMovieDetails: (String, String) -> Unit,
+    navigateToDetails: (String, String) -> Unit
 ) {
+
+    var selectedMovieData by remember {
+        mutableStateOf<MovieData?>(null)
+    }
+
+    val nameState = remember { mutableStateOf("") }
+    val posterState = remember { mutableStateOf("") }
 
     LaunchedEffect(Unit, block = {
         viewModel.getPopularMovies()
@@ -91,7 +97,16 @@ fun MovieScreen(
                             verticalArrangement = Arrangement.spacedBy(1.dp)
                         ) {
                             items(state.data) { movie ->
-                                MovieItemRow(movie, navigateToMovieDetails)
+                                MovieItemRow(
+                                    model = movie,
+                                    navigateToMovieDetails
+                                ) { updatedMovieData ->
+                                    selectedMovieData = updatedMovieData
+                                    navigateToDetails(
+                                        selectedMovieData!!.title,
+                                        selectedMovieData!!.poster_path
+                                    )
+                                }
                             }
                         }
                     }
@@ -102,7 +117,10 @@ fun MovieScreen(
 }
 
 @Composable
-fun MovieItemRow(model: MovieData, onClick: (String, String) -> Unit) {
+fun MovieItemRow(
+    model: MovieData, onClick: (String, String) -> Unit,
+    onItemClicked: (MovieData) -> Unit
+) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
@@ -110,7 +128,6 @@ fun MovieItemRow(model: MovieData, onClick: (String, String) -> Unit) {
             .fillMaxWidth()
             .background(colorResource(id = R.color.col_063041))
             .padding(5.dp)
-            .clickable(onClick = { onClick(model.title, model.poster_path) })
     ) {
         val imageUrl = RestConfig.BASE_IMAGE_URL + model.poster_path
         Log.i("Image Url", imageUrl)
@@ -121,12 +138,19 @@ fun MovieItemRow(model: MovieData, onClick: (String, String) -> Unit) {
             modifier = Modifier
                 .size(100.dp)
                 .padding(5.dp)
+                .clickable { onClick(model.title, model.poster_path) }
+//                .clickable(onClick = { onClick(model.title, model.poster_path) })
         )
         Text(
             text = model.title!!,
             fontSize = 24.sp,
             fontWeight = FontWeight.SemiBold,
-            color = Color.White
+            color = Color.White,
+            modifier = Modifier
+                .padding(0.dp)
+                .clickable(onClick = {
+                    onItemClicked(model)
+                })
         )
     }
 }
