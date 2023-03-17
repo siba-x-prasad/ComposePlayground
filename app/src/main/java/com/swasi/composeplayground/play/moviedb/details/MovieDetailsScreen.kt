@@ -16,7 +16,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
 import com.swasi.composeplayground.components.AppText
+import com.swasi.composeplayground.navigation.common.DefaultButton
 import com.swasi.composeplayground.network.RestConfig
+import com.swasi.composeplayground.network.response.MovieData
 import com.swasi.composeplayground.ui.theme.ComposePlaygroundTheme
 
 
@@ -27,6 +29,7 @@ import com.swasi.composeplayground.ui.theme.ComposePlaygroundTheme
 
 @Composable
 fun MovieDetailsScreen(
+    selectedMovie: MovieData? = null,
     name: String?,
     posterImage: String?,
     popBackStack: () -> Unit,
@@ -61,7 +64,17 @@ fun MovieDetailsScreen(
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center
                     ) {
-                        val imageUrl = RestConfig.BASE_IMAGE_URL + posterImage
+                        DefaultButton(
+                            text = "Back",
+                            onClick = popBackStack
+                        )
+
+                        DefaultButton(
+                            text = "Log Out",
+                            onClick = popUpToLogin
+                        )
+                        val imageUrl =
+                            RestConfig.BASE_IMAGE_URL + posterImage// selectedMovie?.poster_path
                         Image(
                             painter = rememberAsyncImagePainter(imageUrl),
                             contentDescription = name,

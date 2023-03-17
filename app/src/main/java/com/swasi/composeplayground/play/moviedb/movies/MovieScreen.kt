@@ -34,6 +34,8 @@ import com.swasi.composeplayground.network.response.MovieData
  * siba.x.prasad@gmail.com
  */
 
+private val TAG = "MovieScreen"
+// https://stackoverflow.com/questions/68694031/jetpack-compose-passing-data-from-lazy-column-into-another-composable
 
 @Composable
 fun MovieScreen(
@@ -44,25 +46,6 @@ fun MovieScreen(
     LaunchedEffect(Unit, block = {
         viewModel.getPopularMovies()
     })
-
-
-//    var onClickForChild by remember {
-//        mutableStateOf({})
-//    }
-//
-//    LaunchedEffect(Unit, block = {
-//
-//    })
-//
-//    LaunchedEffect(key1 = ""){
-//        viewModel.eventFlow.collectLatest {
-//            when (it) {
-//                is MovieData -> {
-//                    navigateToMovieDetails(it.title, it.poster_path)
-//                }
-//            }
-//        }
-//    }
 
     Scaffold(
         topBar = {

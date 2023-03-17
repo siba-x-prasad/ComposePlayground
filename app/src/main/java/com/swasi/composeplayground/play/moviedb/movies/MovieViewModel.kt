@@ -1,5 +1,8 @@
 package com.swasi.composeplayground.play.moviedb.movies
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.swasi.composeplayground.network.MovieDbApiService
@@ -31,6 +34,16 @@ class MovieViewModel @Inject constructor(private val apiService: MovieDbApiServi
     private fun updateEmitEvent(event: MovieData) {
     }
 
+
+    var selectedMovie by mutableStateOf<MovieData?>(null)
+    //Store state as mutableStateOf to ensure proper recompostions
+    //We'll be modifying the variable through this method
+
+    fun getSelectedMovieData() = selectedMovie
+
+    fun onSelectMovie(movie: MovieData) {
+        selectedMovie = movie
+    }
 
     sealed class State {
         object Loading : State()
