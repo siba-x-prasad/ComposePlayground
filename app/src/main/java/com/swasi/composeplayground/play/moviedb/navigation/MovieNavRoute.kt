@@ -20,6 +20,11 @@ sealed class MovieNavRoute(val path: String) {
         val posterImage = "posterImage"
     }
 
+    object FruitListScreen : MovieNavRoute("FruitList")
+    object FruitDetailsScreen : MovieNavRoute("fruitDetails") {
+        val fruitData = "fruitData"
+    }
+
     object Profile : MovieNavRoute("profile") {
         val id = "id"
         val showDetails = "showDetails"

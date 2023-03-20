@@ -17,7 +17,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -36,7 +35,6 @@ import com.swasi.composeplayground.network.response.ItemResult
 @Composable
 fun TvShowScreen(viewModel: TvShowViewModel = hiltViewModel()) {
     LaunchedEffect(Unit, block = {
-        viewModel.fetchFruitList()
         viewModel.getPopularTvShowList()
     })
     Scaffold(
@@ -89,8 +87,6 @@ fun TvShowScreen(viewModel: TvShowViewModel = hiltViewModel()) {
     )
 }
 
-data class FruitData(val fruitName: String, val image: Int)
-
 @Composable
 fun TvShowList(fruitList: MutableList<ItemResult>) {
 
@@ -135,29 +131,4 @@ fun TvShowItemRow(model: ItemResult) {
     }
 }
 
-@Composable
-fun FruitItemRow(model: FruitData) {
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier
-            .wrapContentHeight()
-            .fillMaxWidth()
-            .background(colorResource(id = R.color.col_063041))
-            .padding(5.dp)
-    ) {
-        Image(
-            painter = painterResource(id = model.image),
-            contentDescription = "",
-            contentScale = ContentScale.Crop,
-            modifier = Modifier
-                .size(100.dp)
-                .padding(5.dp)
-        )
-        Text(
-            text = model.fruitName,
-            fontSize = 24.sp,
-            fontWeight = FontWeight.SemiBold,
-            color = Color.White
-        )
-    }
-}
+

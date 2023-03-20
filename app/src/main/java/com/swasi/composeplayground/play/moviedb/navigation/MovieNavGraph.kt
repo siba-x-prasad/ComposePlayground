@@ -11,6 +11,8 @@ import com.swasi.composeplayground.navigation.screens.ProfileScreen
 import com.swasi.composeplayground.navigation.screens.SearchScreen
 import com.swasi.composeplayground.play.moviedb.details.MovieDetailsScreen
 import com.swasi.composeplayground.play.moviedb.forgotpwd.ForgotPasswordBottomSheet
+import com.swasi.composeplayground.play.moviedb.fruit.FruitDetailsScreen
+import com.swasi.composeplayground.play.moviedb.fruit.FruitListScreen
 import com.swasi.composeplayground.play.moviedb.home.MovieHomeScreen
 import com.swasi.composeplayground.play.moviedb.movies.MovieScreen
 import com.swasi.composeplayground.play.moviedb.onboarding.OnBoardingScreen
@@ -43,6 +45,10 @@ fun MovieNavGraph(navController: NavHostController) {
         addMovieScreen(navController, this)
 
         addMovieDetailsScreen(navController, this)
+
+        addFruitListScreen(navController, this)
+
+        addFruitDetailsScreen(navController, this)
 
         addProfileScreen(navController, this)
 
@@ -137,6 +143,9 @@ private fun addHomeScreen(
             },
             onNavigateToTvShow = {
                 navController.navigate(MovieNavRoute.TvShow.path)
+            },
+            onNavigateToFruits = {
+                navController.navigate(MovieNavRoute.FruitListScreen.path)
             }
         )
     }
@@ -201,6 +210,48 @@ private fun addMovieDetailsScreen(
         MovieDetailsScreen(
             name = args?.getString(MovieNavRoute.MovieDetails.name),
             posterImage = args?.getString(MovieNavRoute.MovieDetails.posterImage),
+            popBackStack = { navController.popBackStack() },
+            popUpToLogin = { popUpToLogin(navController) }
+        )
+    }
+}
+
+private fun addFruitListScreen(
+    navController: NavHostController,
+    navGraphBuilder: NavGraphBuilder
+) {
+    navGraphBuilder.composable(route = MovieNavRoute.FruitListScreen.path) {
+        FruitListScreen(
+            navigateToFruitDetails = { fruitData ->
+                navController.navigate(
+                    MovieNavRoute.FruitDetailsScreen.withArgs(
+                        fruitData
+                    )
+                )
+            }
+        )
+    }
+}
+
+private fun addFruitDetailsScreen(
+    navController: NavHostController,
+    navGraphBuilder: NavGraphBuilder
+) {
+    navGraphBuilder.composable(
+        route = MovieNavRoute.FruitDetailsScreen.withArgsFormat(
+            MovieNavRoute.FruitDetailsScreen.fruitData
+        ),
+        arguments = listOf(
+            navArgument(MovieNavRoute.FruitDetailsScreen.fruitData) {
+                type = NavType.StringType
+            }
+        )
+    ) { navBackStackEntry ->
+
+        val args = navBackStackEntry.arguments
+
+        FruitDetailsScreen(
+            fruitDataInJson = args?.getString(MovieNavRoute.FruitDetailsScreen.fruitData),
             popBackStack = { navController.popBackStack() },
             popUpToLogin = { popUpToLogin(navController) }
         )

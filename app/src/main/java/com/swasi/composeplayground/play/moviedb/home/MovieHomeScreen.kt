@@ -26,7 +26,8 @@ import com.swasi.composeplayground.ui.theme.ComposePlaygroundTheme
 fun MovieHomeScreen(
     viewModel: MovieHomeViewModel = hiltViewModel(),
     onNavigateToMovieScreen: () -> Unit,
-    onNavigateToTvShow: () -> Unit
+    onNavigateToTvShow: () -> Unit,
+    onNavigateToFruits: () -> Unit
 ) {
 
     Scaffold(
@@ -59,10 +60,10 @@ fun MovieHomeScreen(
                         verticalArrangement = Arrangement.Center
                     ) {
 
-                        Spacer(modifier = Modifier.height(10.dp))
+                        Spacer(modifier = Modifier.height(50.dp))
                         AppButton(text = "Movie Home Screen", onClick = {
                         })
-                        Spacer(modifier = Modifier.height(10.dp))
+                        Spacer(modifier = Modifier.height(50.dp))
                         Row(
                             modifier = Modifier.fillMaxWidth(),
                             verticalAlignment = Alignment.CenterVertically,
@@ -94,6 +95,10 @@ fun MovieHomeScreen(
                                     onNavigateToMovieScreen()
                                 })
                         }
+                        Spacer(modifier = Modifier.height(50.dp))
+                        AppButton(text = "Fruit List", onClick = {
+                            onNavigateToFruits()
+                        })
                     }
                 }
             }
