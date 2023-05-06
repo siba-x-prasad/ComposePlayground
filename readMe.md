@@ -1,18 +1,12 @@
 # Jetpack Compose
 
 ## Important Links
-
 - [Documentation](https://developer.android.com/jetpack/compose/documentation)
 - https://www.jetpackcompose.net/
 - https://www.youtube.com/watch?v=cDabx3SjuOY&list=PLQkwcJG4YTCSpJ2NLhDTHhi6XBNfk9WiC&index=2
 - https://medium.com/androiddevelopers/effective-state-management-for-textfield-in-compose-d6e5b070fbe5
 - [Youtube Link](https://github.com/siba-x-prasad/ComposePlayground/blob/main/readMe/ComposeYoutube.md)
-- [BottomSheet](https://medium.com/vidio/jetpack-compose-android-bottom-sheet-4a13168d724c)
-- [Flickering Issue](https://betterprogramming.pub/realize-jetpack-compose-navigation-2889401f52b)
-- [Flickering Issue](https://stackoverflow.com/questions/71342736/issue-with-side-effects-launchedeffect-and-sideeffect-in-jetpack-compose)
-
 ## Best Composable Repositories to Learn
-
 - [TIVI](https://github.com/chrisbanes/tivi)
 - [Stack](https://github.com/tylerbwong/stack/)
 - [Cofee Drinks](https://github.com/AlexZhukovich/CoffeeDrinksWithJetpackCompose)
@@ -22,7 +16,6 @@
 - [RickNMorty](https://github.com/a914-gowtham/RickNMortyCompose)
 
 ## Compose Topics
-
 - [Introduction](https://github.com/siba-x-prasad/ComposePlayground/blob/main/readMe/1.Introduction.md)
 - [Compose Preview](https://github.com/siba-x-prasad/ComposePlayground/blob/main/readMe/2.ComposePreview.md)
 - [Row And Column](https://github.com/siba-x-prasad/ComposePlayground/blob/main/readMe/3.rowColumn.md)
