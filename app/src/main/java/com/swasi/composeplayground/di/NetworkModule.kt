@@ -2,7 +2,6 @@ package com.swasi.composeplayground.di
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.swasi.composeplayground.BuildConfig
 import com.swasi.composeplayground.network.MovieDbApiService
 import com.swasi.composeplayground.network.RestConfig
 import dagger.Module
@@ -10,7 +9,6 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
@@ -24,7 +22,10 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideOkHttpClient() = if (BuildConfig.DEBUG) {
+    fun provideOkHttpClient() = OkHttpClient
+        .Builder()
+        .build()
+    /*if (BuildConfig.DEBUG) {
         val loggingInterceptor = HttpLoggingInterceptor()
         loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
         OkHttpClient.Builder()
@@ -34,7 +35,7 @@ object NetworkModule {
         OkHttpClient
             .Builder()
             .build()
-    }
+    }*/
 
     @Singleton
     @Provides

@@ -69,10 +69,10 @@ fun ForgotPasswordBottomSheet() {
                 Button(
                     onClick = {
                         coroutineScope.launch {
-                            if (modalSheetState.isVisible)
-                                modalSheetState.hide()
-                            else
-                                modalSheetState.animateTo(ModalBottomSheetValue.Expanded)
+//                            if (modalSheetState.isVisible)
+//                                modalSheetState.hide()
+//                            else
+//                                modalSheetState.animateTo(ModalBottomSheetValue.Expanded)
                         }
                     },
                     modifier = Modifier.align(Alignment.BottomCenter)
