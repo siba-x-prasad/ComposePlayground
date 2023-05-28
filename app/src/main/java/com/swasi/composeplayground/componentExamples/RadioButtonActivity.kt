@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 class RadioButtonActivity : AppCompatActivity() {
@@ -23,36 +24,41 @@ class RadioButtonActivity : AppCompatActivity() {
             RadioButtonExample()
         }
     }
+}
 
-    @Composable
-    fun RadioButtonExample() {
-        val radioOptions = listOf("A", "B", "C")
-        val (selectedOption, onOptionSelected) = remember { mutableStateOf(radioOptions[1]) }
-        Column {
-            radioOptions.forEach { text ->
-                Row(
-                    Modifier
-                        .fillMaxWidth()
-                        .selectable(
-                            selected = (text == selectedOption),
-                            onClick = {
-                                onOptionSelected
-                                (text)
-                            }
-                        )
-                        .padding(horizontal = 16.dp)
-                ) {
-                    RadioButton(
+@Composable
+fun RadioButtonExample() {
+    val radioOptions = listOf("A", "B", "C")
+    val (selectedOption, onOptionSelected) = remember { mutableStateOf(radioOptions[1]) }
+    Column {
+        radioOptions.forEach { text ->
+            Row(
+                Modifier
+                    .fillMaxWidth()
+                    .selectable(
                         selected = (text == selectedOption),
-                        onClick = { onOptionSelected(text) }
+                        onClick = {
+                            onOptionSelected
+                            (text)
+                        }
                     )
-                    Text(
-                        text = text,
-                        modifier = Modifier.padding(start = 16.dp)
-                    )
-                }
+                    .padding(horizontal = 16.dp)
+            ) {
+                RadioButton(
+                    selected = (text == selectedOption),
+                    onClick = { onOptionSelected(text) }
+                )
+                Text(
+                    text = text,
+                    modifier = Modifier.padding(start = 16.dp)
+                )
             }
         }
     }
+}
 
+@Preview
+@Composable
+fun RadioPreview() {
+    RadioButtonExample()
 }

@@ -1,12 +1,13 @@
 package com.swasi.composeplayground.componentExamples
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.compose.setContent
+import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.material3.Checkbox
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.tooling.preview.Preview
 
 class CheckboxActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,13 +16,19 @@ class CheckboxActivity : AppCompatActivity() {
             CheckBoxDemo()
         }
     }
-    @Composable
-    fun CheckBoxDemo() {
-        val checkedState = remember { mutableStateOf(true) }
-        Checkbox(
-            checked = checkedState.value,
-            onCheckedChange = { checkedState.value = it }
-        )
-    }
+}
 
+@Composable
+fun CheckBoxDemo() {
+    val checkedState = remember { mutableStateOf(true) }
+    Checkbox(
+        checked = checkedState.value,
+        onCheckedChange = { checkedState.value = it }
+    )
+}
+
+@Preview
+@Composable
+fun CheckboxExample() {
+    CheckBoxDemo()
 }
