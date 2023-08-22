@@ -14,6 +14,7 @@
 - [Jet Spotify](https://github.com/sunny52525/JetSpotify)
 - [Jet Delivery](https://github.com/vipulasri/JetDelivery)
 - [RickNMorty](https://github.com/a914-gowtham/RickNMortyCompose)
+- [Jetpack Compose Awesome](https://github.com/jetpack-compose/jetpack-compose-awesome)
 
 ## Compose Topics
 - [Introduction](https://github.com/siba-x-prasad/ComposePlayground/blob/main/readMe/1.Introduction.md)
