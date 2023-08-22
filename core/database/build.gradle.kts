@@ -41,4 +41,8 @@ dependencies {
     kapt(libs.hiltcompiler)
     kapt(libs.hiltcompilerAndroidx)
     implementation(libs.bundles.room)
+
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidxTestExtJunit)
+    androidTestImplementation(libs.espressoCore)
 }

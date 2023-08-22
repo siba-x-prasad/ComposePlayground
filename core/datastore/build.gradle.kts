@@ -42,4 +42,8 @@ dependencies {
     kapt(libs.hiltcompiler)
     kapt(libs.hiltcompilerAndroidx)
     implementation(libs.datastore)
+
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidxTestExtJunit)
+    androidTestImplementation(libs.espressoCore)
 }

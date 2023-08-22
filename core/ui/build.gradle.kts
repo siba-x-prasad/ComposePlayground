@@ -40,4 +40,7 @@ android {
 
 dependencies {
     implementation(libs.bundles.compose)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidxTestExtJunit)
+    androidTestImplementation(libs.espressoCore)
 }

@@ -2,9 +2,9 @@ package swasi.android.model
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import com.swasi.composeplayground.network.RestConfig
 import kotlinx.android.parcel.Parcelize
 
+const val BASE_IMAGE_URL = "http://image.tmdb.org/t/p/w500"
 
 @Parcelize
 data class PopularTvShowResponse(
@@ -30,5 +30,5 @@ data class ItemResult(
     @SerializedName("vote_average") var voteAverage: Double? = null,
     @SerializedName("vote_count") var voteCount: Int? = null
 ) : Parcelable {
-    var fullImageUrl = "${RestConfig.BASE_IMAGE_URL}${posterPath}"
+    var fullImageUrl = "${BASE_IMAGE_URL}${posterPath}"
 }

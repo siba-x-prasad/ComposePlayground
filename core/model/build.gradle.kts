@@ -36,6 +36,7 @@ android {
 
 dependencies {
 
+    implementation(libs.gson)
     implementation(libs.coreKtx)
     implementation(libs.appcompat)
     implementation(libs.material)
