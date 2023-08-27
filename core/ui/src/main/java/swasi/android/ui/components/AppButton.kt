@@ -4,7 +4,6 @@ package swasi.android.ui.components
 import android.view.MotionEvent
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -15,6 +14,7 @@ import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -28,22 +28,26 @@ import androidx.compose.ui.input.pointer.pointerInteropFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.swasi.composeplayground.R
 import com.swasi.composeplayground.ui.theme.Colors
+import swasi.android.ui.R
 
 @ExperimentalComposeUiApi
 @Composable
-fun ApButton(
-    title: String = "Hello", buttonColor: Color = Color.Red, textColor: Color = Color.White,
-    enabled: Boolean = true, onClick: (() -> Unit), radious: Int = 8
+fun AppButton(
+    modifier: Modifier = Modifier,
+    text: String = "Hello",
+    buttonColor: Color = Color.Red,
+    textColor: Color = Color.White,
+    enabled: Boolean = true,
+    onClick: (() -> Unit),
+    radios: Int = 8
 ) {
 
-    val color = remember { mutableStateOf(Color.Red) }
+    val color = remember { mutableStateOf(buttonColor) }
 
     Button(
         onClick = onClick,
-//        modifier = Modifier.padding(8.dp),
-        shape = RoundedCornerShape(radious.dp),
+        shape = RoundedCornerShape(radios.dp),
         enabled = enabled,
         colors = ButtonDefaults.buttonColors(
             containerColor = color.value,
@@ -63,6 +67,58 @@ fun ApButton(
                 }
                 true
             }
+            .then(modifier)
+    ) {
+        Text(color = textColor, text = text)
+    }
+}
+
+@OptIn(ExperimentalComposeUiApi::class)
+@Preview
+@Composable
+fun AppButtonEnablePreview() {
+    AppButton(onClick = {
+
+    })
+}
+
+@ExperimentalComposeUiApi
+@Composable
+fun AppButtonDisable(
+    modifier: Modifier = Modifier,
+    title: String = "Hello",
+    buttonColor: Color = Color.Gray,
+    textColor: Color = Color.White,
+    onClick: (() -> Unit),
+    radios: Int = 8,
+    enable: Boolean = true
+) {
+
+    val color = remember { mutableStateOf(buttonColor) }
+
+    Button(
+        onClick = onClick,
+        shape = RoundedCornerShape(radios.dp),
+        enabled = enable,
+        colors = ButtonDefaults.buttonColors(
+            containerColor = color.value,
+            contentColor = textColor
+        ),
+        modifier = Modifier
+            .padding(8.dp)
+            .pointerInteropFilter {
+                when (it.action) {
+                    MotionEvent.ACTION_DOWN -> {
+                        color.value = Colors.teal700
+                    }
+
+                    MotionEvent.ACTION_UP -> {
+                        color.value = Colors.teal200
+                    }
+                }
+                true
+            }
+            .then(modifier)
     ) {
         Text(color = textColor, text = title)
     }
@@ -71,60 +127,114 @@ fun ApButton(
 @OptIn(ExperimentalComposeUiApi::class)
 @Preview
 @Composable
-fun AppButtonEnablePreview() {
-    ApButton(onClick = {
+fun AppButtonDisablePreview() {
+    AppButtonDisable(
+        title = "Cancel",
+        onClick = {}
+    )
+}
 
-    })
+@ExperimentalComposeUiApi
+@Composable
+fun AppButtonWithIcon(
+    modifier: Modifier = Modifier,
+    title: String = "Hello",
+    buttonColor: Color = Color.Red,
+    textColor: Color = Color.White,
+    enabled: Boolean = true,
+    onClick: (() -> Unit),
+    radios: Int = 8,
+    iconDrawable: Int,
+    iconContentDesc: String = "content description"
+) {
+
+    val color = remember { mutableStateOf(buttonColor) }
+
+    Button(
+        onClick = onClick,
+        shape = RoundedCornerShape(radios.dp),
+        enabled = enabled,
+        colors = ButtonDefaults.buttonColors(
+            containerColor = color.value,
+            contentColor = textColor
+        ),
+        modifier = Modifier
+            .padding(8.dp)
+            .pointerInteropFilter {
+                when (it.action) {
+                    MotionEvent.ACTION_DOWN -> {
+                        color.value = Colors.teal700
+                    }
+
+                    MotionEvent.ACTION_UP -> {
+                        color.value = Colors.teal200
+                    }
+                }
+                true
+            }
+            .then(modifier)
+    ) {
+        Image(
+            painterResource(id = iconDrawable),
+            contentDescription = iconContentDesc,
+            modifier = Modifier.size(20.dp)
+        )
+        Spacer(Modifier.size(ButtonDefaults.IconSpacing))
+        Text(color = textColor, text = title)
+    }
+}
+
+@Composable
+fun AppOutlinedButton(
+    text: String = "Hello",
+    textColor: Color = Color.Black,
+    modifier: Modifier = Modifier.padding(0.dp),
+    onClick: () -> Unit
+) {
+    OutlinedButton(
+        modifier = Modifier.composed { modifier },
+        onClick = onClick
+    ) {
+        Text(
+            text = text, Modifier.padding(start = 10.dp),
+            color = textColor
+        )
+    }
 }
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Preview
 @Composable
-fun AppButtonDisablePreview() {
-    ApButton(enabled = false, onClick = {})
+fun AppButtonIconPreview() {
+    AppButtonWithIcon(
+        title = "AppButton with Icon",
+        onClick = {},
+        iconDrawable = R.drawable.ic_rabit
+    )
 }
-
-
-@Composable
-fun AppButton(
-    title: String = "Button",
-    onClick: (() -> Unit),
-    enabled: Boolean = true,
-    radious: Int = 5,
-    textColor: Color = Color.White,
-    modifier: Modifier
-) {
-    Button(
-        onClick = onClick, shape = RoundedCornerShape(radious.dp),
-        enabled = enabled,
-        colors = ButtonDefaults.buttonColors(
-            contentColor = textColor
-        ), modifier = Modifier
-            .padding(10.dp)
-            .composed { modifier }
-    ) {
-        Text(text = title)
-    }
-}
-
 
 @Composable
 fun DisableButton(
     title: String = "Button",
     onClick: (() -> Unit),
-    enabled: Boolean = true,
-    radious: Int = 5,
+    radios: Int = 5,
     textColor: Color = Color.White
 ) {
     Button(
         onClick = onClick,
-        shape = RoundedCornerShape(radious.dp),
+        shape = RoundedCornerShape(radios.dp),
         enabled = false,
         colors = ButtonDefaults.buttonColors(
             contentColor = textColor
         ), modifier = Modifier.padding(10.dp)
     ) {
-        Text(text = title)
+        Icon(
+            Icons.Filled.Favorite,
+            contentDescription = "Favorite",
+            modifier = Modifier.size(ButtonDefaults.IconSize)
+        )
+        Spacer(Modifier.size(ButtonDefaults.IconSpacing))
+        Text(title)
     }
 }
 
@@ -156,7 +266,7 @@ fun ButtonWithTwoTextView() {
 fun ButtonWithIcon() {
     Button(onClick = {}) {
         Image(
-            painterResource(id = R.mipmap.ic_launcher),
+            painterResource(id = R.drawable.ic_rabit),
             contentDescription = "Cart button icon",
             modifier = Modifier.size(20.dp)
         )
@@ -219,26 +329,4 @@ fun ButtonWithElevation() {
     }
 }
 
-@Composable
-fun ButtonWithLeftIcon() {
-    Button(
-        onClick = { /* ... */ },
-        // Uses ButtonDefaults.ContentPadding by default
-        contentPadding = PaddingValues(
-            start = 20.dp,
-            top = 12.dp,
-            end = 20.dp,
-            bottom = 12.dp
-        )
-    ) {
-        // Inner content including an icon and a text label
-        Icon(
-            Icons.Filled.Favorite,
-            contentDescription = "Favorite",
-            modifier = Modifier.size(ButtonDefaults.IconSize)
-        )
-        Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-        Text("Like")
-    }
-}
 

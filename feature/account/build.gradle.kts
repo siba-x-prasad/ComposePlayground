@@ -2,6 +2,8 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.org.jetbrains.kotlin.android)
+    id("dagger.hilt.android.plugin")
+    id("kotlin-kapt")
 }
 
 android {
@@ -34,11 +36,14 @@ android {
 }
 
 dependencies {
-
+    implementation(libs.bundles.compose)
+    implementation(libs.hilt)
+    kapt(libs.hiltcompiler)
     implementation(libs.coreKtx)
     implementation(libs.appcompat)
     implementation(libs.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidxTestExtJunit)
     androidTestImplementation(libs.espressoCore)
+    implementation(project(mapOf("path" to ":core:ui")))
 }

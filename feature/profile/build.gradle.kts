@@ -41,4 +41,5 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidxTestExtJunit)
     androidTestImplementation(libs.espressoCore)
+    implementation(project(mapOf("path" to ":core:ui")))
 }

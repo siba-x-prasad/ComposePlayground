@@ -1,12 +1,291 @@
 package swasi.android.ui.components
 
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.KeyboardActionScope
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.Icon
+import androidx.compose.material.OutlinedTextField
+import androidx.compose.material.Text
+import androidx.compose.material.TextFieldColors
+import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.LocalTextStyle
+import androidx.compose.material3.TextField
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.composed
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+
+@Composable
+fun AppTextField(
+    label: String,
+    keyboardType: KeyboardType = KeyboardType.Text,
+    imeAction: ImeAction = ImeAction.Next,
+    onTextChanged: (String) -> Unit,
+    onNext: ((KeyboardActionScope) -> Unit)? = null,
+    onDone: ((KeyboardActionScope) -> Unit)? = null,
+    isError: Boolean = false,
+    visualTransformation: VisualTransformation = VisualTransformation.None,
+    modifier: Modifier = Modifier.padding(0.dp)
+) {
+    var text by remember {
+        mutableStateOf("")
+    }
+
+    TextField(
+        modifier = Modifier.composed { modifier },
+        value = text,
+        onValueChange = {
+            text = it
+            onTextChanged(it)
+        },
+        label = {
+            Text(label)
+        },
+        keyboardOptions = KeyboardOptions(
+            keyboardType = keyboardType,
+            imeAction = imeAction
+        ),
+        keyboardActions = KeyboardActions(
+            onDone = onDone?.let { it },
+            onNext = onNext?.let { it }
+        ),
+        isError = isError,
+        visualTransformation = visualTransformation
+    )
+}
+
+@Composable
+fun AppTextFieldWithIcon(
+    label: String,
+    keyboardType: KeyboardType = KeyboardType.Text,
+    imeAction: ImeAction = ImeAction.Next,
+    onTextChanged: (String) -> Unit,
+    onNext: ((KeyboardActionScope) -> Unit)? = null,
+    onDone: ((KeyboardActionScope) -> Unit)? = null,
+    isError: Boolean = false,
+    visualTransformation: VisualTransformation = VisualTransformation.None,
+    modifier: Modifier = Modifier.padding(0.dp),
+    icon: ImageVector = Icons.Default.Email,
+    iconColor: Color = Color.Black
+) {
+    var text by remember {
+        mutableStateOf("")
+    }
+
+    TextField(
+        modifier = Modifier.composed { modifier },
+        value = text,
+        onValueChange = {
+            text = it
+            onTextChanged(it)
+        },
+        label = {
+            Text(label)
+        },
+        keyboardOptions = KeyboardOptions(
+            keyboardType = keyboardType,
+            imeAction = imeAction
+        ),
+        keyboardActions = KeyboardActions(
+            onDone = onDone?.let { it },
+            onNext = onNext?.let { it }
+        ),
+        isError = isError,
+        visualTransformation = visualTransformation,
+        leadingIcon = {
+            Icon(
+                imageVector = icon, contentDescription = text,
+                tint = iconColor
+            )
+        }
+    )
+}
+
+
+@Composable
+fun AppOutLinedTextField(
+    label: String,
+    keyboardType: KeyboardType = KeyboardType.Text,
+    imeAction: ImeAction = ImeAction.Next,
+    onTextChanged: (String) -> Unit,
+    onNext: ((KeyboardActionScope) -> Unit)? = null,
+    onDone: ((KeyboardActionScope) -> Unit)? = null,
+    isError: Boolean = false,
+    visualTransformation: VisualTransformation = VisualTransformation.None,
+    modifier: Modifier = Modifier.padding(0.dp)
+) {
+    var text by remember {
+        mutableStateOf("")
+    }
+    androidx.compose.material3.OutlinedTextField(
+        modifier = Modifier.composed { modifier },
+        value = text,
+        onValueChange = {
+            text = it
+            onTextChanged(it)
+        },
+        label = {
+            Text(label)
+        },
+        keyboardOptions = KeyboardOptions(
+            keyboardType = keyboardType,
+            imeAction = imeAction
+        ),
+        keyboardActions = KeyboardActions(
+            onDone = onDone?.let { it },
+            onNext = onNext?.let { it }
+        ),
+        isError = isError,
+        visualTransformation = visualTransformation
+    )
+}
+
+@Composable
+fun AppOutLinedTextFieldWithIcon(
+    label: String,
+    keyboardType: KeyboardType = KeyboardType.Text,
+    imeAction: ImeAction = ImeAction.Next,
+    onTextChanged: (String) -> Unit,
+    onNext: ((KeyboardActionScope) -> Unit)? = null,
+    onDone: ((KeyboardActionScope) -> Unit)? = null,
+    isError: Boolean = false,
+    visualTransformation: VisualTransformation = VisualTransformation.None,
+    modifier: Modifier = Modifier.padding(0.dp),
+    icon: ImageVector = Icons.Default.Email,
+    iconColor: Color = Color.Black
+) {
+
+    var text by remember {
+        mutableStateOf("")
+    }
+
+    androidx.compose.material3.OutlinedTextField(
+        modifier = Modifier.composed { modifier },
+        value = text,
+        onValueChange = {
+            text = it
+            onTextChanged(it)
+        },
+        label = {
+            Text(label)
+        },
+        keyboardOptions = KeyboardOptions(
+            keyboardType = keyboardType,
+            imeAction = imeAction
+        ),
+        keyboardActions = KeyboardActions(
+            onDone = onDone?.let { it },
+            onNext = onNext?.let { it }
+        ),
+        isError = isError,
+        visualTransformation = visualTransformation,
+        leadingIcon = {
+            Icon(
+                imageVector = icon, contentDescription = text,
+                tint = iconColor
+            )
+        }
+    )
+}
+
+@Preview
+@Composable
+fun AppTextFieldPreview() {
+    AppTextField(label = "", onTextChanged = {
+
+    })
+}
+
+@Preview
+@Composable
+fun AppTextFieldWithIconPreview() {
+    AppTextFieldWithIcon(label = "", onTextChanged = {
+
+    })
+}
+
+@Preview
+@Composable
+fun AppOutLinedTextFieldPreview() {
+    AppOutLinedTextField(label = "", onTextChanged = {
+
+    })
+}
+
+@Preview
+@Composable
+fun AppOutLinedTextFieldWithIconPreview() {
+    AppOutLinedTextFieldWithIcon(label = "", onTextChanged = {
+
+    })
+}
+
+@Composable
+fun AppEditText(
+    onValueChange: (TextFieldValue) -> Unit,
+    modifier: Modifier = Modifier,
+    textStyle: TextStyle = LocalTextStyle.current,
+    hint: String = "",
+    placeholder: String = "",
+    leadingIcon: @Composable (() -> Unit)? = null,
+    trailingIcon: @Composable (() -> Unit)? = null,
+    keyboardOptions: KeyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
+    keyboardActions: KeyboardActions = KeyboardActions(),
+    singleLine: Boolean = false,
+    maxLines: Int = Int.MAX_VALUE,
+    shape: androidx.compose.ui.graphics.Shape = TextFieldDefaults.TextFieldShape,
+    textColor: Color = Color.Blue
+) {
+    var text by remember { mutableStateOf(TextFieldValue("")) }
+    TextField(
+        value = text,
+        label = { Text(text = hint) },
+        keyboardOptions = keyboardOptions,
+        onValueChange = onValueChange,
+        singleLine = singleLine,
+        placeholder = { Text(text = placeholder) },
+        leadingIcon = leadingIcon,
+        trailingIcon = trailingIcon,
+        shape = shape,
+        textStyle = textStyle,
+        modifier = modifier
+            .padding()
+            .then(
+                modifier
+            )
+    )
+}
+
+@Preview
+@Composable
+fun AppEditTextPreview() {
+    var text by remember { mutableStateOf(TextFieldValue("")) }
+    AppEditText(
+        onValueChange = { newText ->
+            text = newText
+        },
+        hint = "Hello",
+        placeholder = "spm",
+        textColor = Color.White,
+    )
+}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -74,5 +353,39 @@ fun TextFieldWithIcons() {
         },
         label = { Text(text = "Email address") },
         placeholder = { Text(text = "Enter your e-mail") },
+    )
+}
+
+
+@Composable
+fun AppEditTextMain(
+    value: TextFieldValue,
+    onValueChange: (TextFieldValue) -> Unit,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    readOnly: Boolean = false,
+    textStyle: TextStyle = LocalTextStyle.current,
+    label: @Composable (() -> Unit)? = null,
+    placeholder: @Composable (() -> Unit)? = null,
+    leadingIcon: @Composable (() -> Unit)? = null,
+    trailingIcon: @Composable (() -> Unit)? = null,
+    isError: Boolean = false,
+    visualTransformation: VisualTransformation = VisualTransformation.None,
+    keyboardOptions: KeyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
+    keyboardActions: KeyboardActions = KeyboardActions(),
+    singleLine: Boolean = false,
+    maxLines: Int = Int.MAX_VALUE,
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    shape: androidx.compose.ui.graphics.Shape = TextFieldDefaults.TextFieldShape,
+    colors: TextFieldColors = TextFieldDefaults.textFieldColors()
+) {
+    var text by remember { mutableStateOf(TextFieldValue("")) }
+    TextField(
+        value = text,
+        label = { Text(text = "Number Input Type") },
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+        onValueChange = { it ->
+            text = it
+        }
     )
 }
