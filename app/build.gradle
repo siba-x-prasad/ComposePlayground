@@ -106,4 +106,8 @@ dependencies {
     implementation "io.coil-kt:coil-compose:2.2.2"
     //Paging 3.0
     implementation 'androidx.paging:paging-compose:3.2.0'
+    implementation project(path: ':feature:account')
+    implementation project(path: ':feature:home')
+    implementation project(path: ':feature:profile')
+    implementation project(path: ':core:ui')
 }
