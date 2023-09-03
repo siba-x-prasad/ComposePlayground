@@ -1,4 +1,4 @@
-package com.swasi.composeplayground.nav
+package com.swasi.composeplayground.appnav
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavGraphBuilder
@@ -14,11 +14,11 @@ import swasi.android.account.signup.SignUpScreen
 import swasi.android.account.splash.SplashScreen
 
 @Composable
-fun GlobalNavGraph(navController: NavHostController) {
+fun AppNavGraph(navController: NavHostController) {
 
     NavHost(
         navController = navController,
-        startDestination = GlobalNavRoute.Splash.path
+        startDestination = AppNavRoute.Splash.path
     ) {
         addSplashScreen(navController, this)
 
@@ -37,10 +37,10 @@ private fun addSplashScreen(
     navController: NavHostController,
     navGraphBuilder: NavGraphBuilder
 ) {
-    navGraphBuilder.composable(route = GlobalNavRoute.Splash.path) {
+    navGraphBuilder.composable(route = AppNavRoute.Splash.path) {
         SplashScreen(
             onNavigateToOnBoarding = {
-                navController.navigate(GlobalNavRoute.OnBoarding.path)
+                navController.navigate(AppNavRoute.OnBoarding.path)
             }
         )
     }
@@ -50,15 +50,15 @@ private fun addOnBoardingScreen(
     navController: NavHostController,
     navGraphBuilder: NavGraphBuilder
 ) {
-    navGraphBuilder.composable(route = GlobalNavRoute.OnBoarding.path) {
+    navGraphBuilder.composable(route = AppNavRoute.OnBoarding.path) {
         OnBoardingScreen(
             onNavigateToSignIn = {
-                navController.navigate(GlobalNavRoute.SignIn.path) {
-                    popUpTo(GlobalNavRoute.OnBoarding.path)
+                navController.navigate(AppNavRoute.SignIn.path) {
+                    popUpTo(AppNavRoute.OnBoarding.path)
                 }
             },
             onNavigateToSignUp = {
-                navController.navigate(GlobalNavRoute.SignUp.path)
+                navController.navigate(AppNavRoute.SignUp.path)
             }
         )
     }
@@ -68,16 +68,16 @@ private fun addSignInScreen(
     navController: NavHostController,
     navGraphBuilder: NavGraphBuilder
 ) {
-    navGraphBuilder.composable(route = GlobalNavRoute.SignIn.path) {
+    navGraphBuilder.composable(route = AppNavRoute.SignIn.path) {
         SignInScreen(
             onNavigateToHome = {
-                navController.navigate(GlobalNavRoute.Home.path)
+                navController.navigate(AppNavRoute.Home.path)
             },
             onNavigateToSignUp = {
-                navController.navigate(GlobalNavRoute.SignUp.path)
+                navController.navigate(AppNavRoute.SignUp.path)
             },
             onNavigateToForgotPassword = {
-                navController.navigate(GlobalNavRoute.ForgotPassword.path)
+                navController.navigate(AppNavRoute.ForgotPassword.path)
             }
         )
     }
@@ -87,13 +87,13 @@ private fun addSignUpScreen(
     navController: NavHostController,
     navGraphBuilder: NavGraphBuilder
 ) {
-    navGraphBuilder.composable(route = GlobalNavRoute.SignUp.path) {
+    navGraphBuilder.composable(route = AppNavRoute.SignUp.path) {
         SignUpScreen(
             onNavigateToHome = {
-                navController.navigate(GlobalNavRoute.Home.path)
+                navController.navigate(AppNavRoute.Home.path)
             },
             onNavigateToSIgnIn = {
-                navController.navigate(GlobalNavRoute.SignIn.path)
+                navController.navigate(AppNavRoute.SignIn.path)
             }
         )
     }
@@ -103,14 +103,14 @@ private fun addForgotPasswordScreen(
     navController: NavHostController,
     navGraphBuilder: NavGraphBuilder
 ) {
-    navGraphBuilder.composable(route = GlobalNavRoute.ForgotPassword.path) {
+    navGraphBuilder.composable(route = AppNavRoute.ForgotPassword.path) {
         ForgotPasswordBottomSheet()
     }
 }
 
 
 private fun popUpToLogin(navController: NavHostController) {
-    navController.popBackStack(GlobalNavRoute.SignIn.path, inclusive = false)
+    navController.popBackStack(AppNavRoute.SignIn.path, inclusive = false)
 }
 
 private fun addProfileScreen(
@@ -118,15 +118,15 @@ private fun addProfileScreen(
     navGraphBuilder: NavGraphBuilder
 ) {
     navGraphBuilder.composable(
-        route = GlobalNavRoute.Profile.withArgsFormat(
-            GlobalNavRoute.Profile.id,
-            GlobalNavRoute.Profile.showDetails
+        route = AppNavRoute.Profile.withArgsFormat(
+            AppNavRoute.Profile.id,
+            AppNavRoute.Profile.showDetails
         ),
         arguments = listOf(
-            navArgument(GlobalNavRoute.Profile.id) {
+            navArgument(AppNavRoute.Profile.id) {
                 type = NavType.IntType
             },
-            navArgument(GlobalNavRoute.Profile.showDetails) {
+            navArgument(AppNavRoute.Profile.showDetails) {
                 type = NavType.BoolType
             }
         )
@@ -143,9 +143,9 @@ private fun addSearchScreen(
     navGraphBuilder: NavGraphBuilder
 ) {
     navGraphBuilder.composable(
-        route = GlobalNavRoute.Search.withArgsFormat(GlobalNavRoute.Search.query),
+        route = AppNavRoute.Search.withArgsFormat(AppNavRoute.Search.query),
         arguments = listOf(
-            navArgument(GlobalNavRoute.Search.query) {
+            navArgument(AppNavRoute.Search.query) {
                 type = NavType.StringType
                 nullable = true
             }
