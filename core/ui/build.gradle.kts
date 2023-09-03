@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "swasi.android.ui"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         minSdk = 24
@@ -26,20 +26,26 @@ android {
     }
     buildFeatures {
         compose = true
-        dataBinding = true
-        viewBinding = true
     }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.4.4"
+        kotlinCompilerVersion = "1.4.4"
+    }
+
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
 }
 
 dependencies {
     implementation(libs.bundles.compose)
+    implementation(libs.coreKtx)
+    implementation(libs.appcompat)
+    implementation(libs.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidxTestExtJunit)
     androidTestImplementation(libs.espressoCore)

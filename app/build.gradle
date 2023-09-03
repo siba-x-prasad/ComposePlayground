@@ -4,15 +4,16 @@ plugins {
     id 'dagger.hilt.android.plugin'
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
+//    id 'com.google.devtools.ksp'
 }
 
 android {
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.swasi.composeplayground"
         minSdk 26
-        targetSdk 33
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
@@ -43,7 +44,8 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion "1.4.1"
+        kotlinCompilerExtensionVersion '1.4.4'
+        kotlinCompilerVersion '1.4.4'
     }
     packagingOptions {
         resources {
@@ -54,58 +56,58 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.core:core-ktx:1.10.1'
-    implementation "androidx.compose.ui:ui:1.5.0"
-    implementation 'androidx.compose.material3:material3:1.2.0-alpha05'
-    implementation "androidx.compose.ui:ui-tooling-preview:1.5.0"
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.1'
-    implementation 'androidx.activity:activity-compose:1.7.2'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.9.0'
+    implementation libs.coreKtx
+    implementation libs.composeUi
+    implementation 'androidx.compose.material3:material3:1.2.0-alpha06'
+    implementation libs.composePreview
+    implementation libs.lifecycle.runtime.ktx
+    implementation libs.composeActivity
+    implementation libs.appcompat
+    implementation libs.material
     implementation 'androidx.navigation:navigation-runtime-ktx:2.7.0'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-    androidTestImplementation "androidx.compose.ui:ui-test-junit4:1.5.0"
-    debugImplementation "androidx.compose.ui:ui-tooling:1.5.0"
-    debugImplementation "androidx.compose.ui:ui-test-manifest:1.5.0"
-    implementation "androidx.constraintlayout:constraintlayout-compose:1.0.1"
-    implementation "androidx.navigation:navigation-compose:2.7.0"
-    implementation "androidx.compose.material:material:1.5.0"
+    testImplementation libs.junit
+    androidTestImplementation libs.androidxTestExtJunit
+    androidTestImplementation libs.espressoCore
+    androidTestImplementation libs.ui.test.junit4
+    debugImplementation libs.composeUiTooling
+    debugImplementation libs.composeUiManifest
+    implementation libs.composeConstraintLayout
+    implementation "androidx.navigation:navigation-compose:2.7.1"
+    implementation libs.composeMaterial
 
     // dagger hilt
-    implementation 'com.google.dagger:hilt-android:2.45'
-    kapt 'com.google.dagger:hilt-compiler:2.45'
+    implementation 'com.google.dagger:hilt-android:2.47'
+    kapt libs.hilt.compiler
 
     // For instrumentation tests
-    androidTestImplementation 'com.google.dagger:hilt-android-testing:2.45'
-    kaptAndroidTest 'com.google.dagger:hilt-compiler:2.45'
+    androidTestImplementation libs.hilt.android.testing
+    kaptAndroidTest libs.hilt.compiler
 
     // For local unit tests
-    testImplementation 'com.google.dagger:hilt-android-testing:2.45'
-    kaptTest 'com.google.dagger:hilt-compiler:2.45'
+    testImplementation 'com.google.dagger:hilt-android-testing:2.47'
+    kaptTest 'com.google.dagger:hilt-compiler:2.47'
 
     //hiltViewModel
-    implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
+    implementation libs.composeHiltNavigation
     // Retrofit
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    implementation "com.squareup.okhttp3:okhttp:4.10.0"
-    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.3'
+    implementation libs.retrofit
+    implementation libs.okhttp
+    implementation libs.retrofitGsonConverter
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.10.0'
 
-    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
-    implementation 'io.reactivex.rxjava2:rxjava:2.2.6'
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    implementation libs.rxandroid
+    implementation libs.rxjava
+    implementation libs.retrofitRxjava
 
     // Room database
-    implementation 'androidx.room:room-runtime:2.5.2'
-    annotationProcessor 'androidx.room:room-compiler:2.5.2'
-    implementation 'androidx.room:room-ktx:2.5.2'
-    kapt "androidx.room:room-compiler:2.5.2"
+    implementation libs.roomRuntime
+    annotationProcessor libs.room.compiler
+    implementation libs.roomKtx
+    kapt libs.room.compiler
     // Image Loading
-    implementation "io.coil-kt:coil-compose:2.2.2"
+    implementation libs.coil.compose
     //Paging 3.0
-    implementation 'androidx.paging:paging-compose:3.2.0'
+    implementation libs.paging.compose
     implementation project(path: ':feature:account')
     implementation project(path: ':feature:home')
     implementation project(path: ':feature:profile')

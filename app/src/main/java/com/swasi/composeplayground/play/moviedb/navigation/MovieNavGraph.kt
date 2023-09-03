@@ -9,6 +9,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.swasi.composeplayground.navigation.screens.ProfileScreen
 import com.swasi.composeplayground.navigation.screens.SearchScreen
+import com.swasi.composeplayground.play.moviedb.details.MovieDetailsScreen
 import com.swasi.composeplayground.play.moviedb.forgotpwd.ForgotPasswordBottomSheet
 import com.swasi.composeplayground.play.moviedb.fruit.FruitDetailsScreen
 import com.swasi.composeplayground.play.moviedb.fruit.FruitListScreen
@@ -19,7 +20,6 @@ import com.swasi.composeplayground.play.moviedb.signin.SignInScreen
 import com.swasi.composeplayground.play.moviedb.signup.SignUpScreen
 import com.swasi.composeplayground.play.moviedb.splash.SplashScreen
 import com.swasi.composeplayground.play.moviedb.tvshow.TvShowScreen
-import swasi.android.home.details.MovieDetailsScreen
 
 @Composable
 fun MovieNavGraph(navController: NavHostController) {
