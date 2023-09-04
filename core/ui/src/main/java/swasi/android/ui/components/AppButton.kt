@@ -46,28 +46,28 @@ fun AppButton(
     val color = remember { mutableStateOf(buttonColor) }
 
     Button(
+        modifier = Modifier
+            .padding(8.dp)
+//            .pointerInteropFilter {
+//                when (it.action) {
+//                    MotionEvent.ACTION_DOWN -> {
+//                        color.value = Colors.teal700
+//                    }
+//
+//                    MotionEvent.ACTION_UP -> {
+//                        color.value = Colors.teal200
+//                    }
+//                }
+//                true
+//            }
+            .then(modifier),
         onClick = onClick,
         shape = RoundedCornerShape(radios.dp),
         enabled = enabled,
         colors = ButtonDefaults.buttonColors(
             containerColor = color.value,
             contentColor = textColor
-        ),
-        modifier = Modifier
-            .padding(8.dp)
-            .pointerInteropFilter {
-                when (it.action) {
-                    MotionEvent.ACTION_DOWN -> {
-                        color.value = Colors.teal700
-                    }
-
-                    MotionEvent.ACTION_UP -> {
-                        color.value = Colors.teal200
-                    }
-                }
-                true
-            }
-            .then(modifier)
+        )
     ) {
         Text(color = textColor, text = text)
     }
