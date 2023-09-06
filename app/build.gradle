@@ -111,5 +111,6 @@ dependencies {
     implementation project(path: ':feature:account')
     implementation project(path: ':feature:home')
     implementation project(path: ':feature:profile')
+    implementation project(path: ':feature:moviedb')
     implementation project(path: ':core:ui')
 }
