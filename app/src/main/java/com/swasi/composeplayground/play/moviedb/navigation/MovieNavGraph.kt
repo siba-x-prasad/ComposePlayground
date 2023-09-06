@@ -19,7 +19,7 @@ import com.swasi.composeplayground.play.moviedb.onboarding.OnBoardingScreen
 import com.swasi.composeplayground.play.moviedb.signin.SignInScreen
 import com.swasi.composeplayground.play.moviedb.signup.SignUpScreen
 import com.swasi.composeplayground.play.moviedb.splash.SplashScreen
-import com.swasi.composeplayground.play.moviedb.tvshow.TvShowScreen
+import swasi.android.moviedb.tvshow.TvShowScreen
 
 @Composable
 fun MovieNavGraph(navController: NavHostController) {

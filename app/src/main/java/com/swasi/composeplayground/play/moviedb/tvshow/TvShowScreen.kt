@@ -3,7 +3,16 @@ package com.swasi.composeplayground.play.moviedb.tvshow
 import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Scaffold
@@ -26,6 +35,7 @@ import com.swasi.composeplayground.R
 import com.swasi.composeplayground.components.ProgressIndicator
 import com.swasi.composeplayground.network.RestConfig
 import com.swasi.composeplayground.network.response.ItemResult
+import swasi.android.moviedb.tvshow.TvShowViewModel
 
 /**
  * Created by Sibaprasad Mohanty on 11/03/2023.

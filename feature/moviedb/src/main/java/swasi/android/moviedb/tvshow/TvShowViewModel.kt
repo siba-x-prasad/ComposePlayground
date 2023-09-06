@@ -1,4 +1,4 @@
-package com.swasi.composeplayground.play.moviedb.tvshow
+package swasi.android.moviedb.tvshow
 
 import android.util.Log
 import androidx.compose.runtime.getValue
@@ -6,12 +6,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.swasi.composeplayground.network.MovieDbApiService
-import com.swasi.composeplayground.network.response.ItemResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import swasi.android.model.ItemResult
+import swasi.android.network.MovieDbApiService
 import javax.inject.Inject
 
 /**

@@ -1,10 +1,20 @@
-package com.swasi.composeplayground.play.moviedb.tvshow
+package swasi.android.moviedb.tvshow
 
 import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Scaffold
 import androidx.compose.material.TopAppBar
 import androidx.compose.material3.Text
@@ -15,15 +25,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberAsyncImagePainter
-import com.swasi.composeplayground.components.ProgressIndicator
-import com.swasi.composeplayground.network.RestConfig
-import com.swasi.composeplayground.network.response.ItemResult
+import swasi.android.model.ItemResult
+import swasi.android.network.RestConfig
+import swasi.android.ui.components.ProgressIndicator
 
 /**
  * Created by Sibaprasad Mohanty on 11/03/2023.
@@ -109,7 +118,7 @@ fun TvShowItemRow(model: ItemResult) {
         modifier = Modifier
             .wrapContentHeight()
             .fillMaxWidth()
-            .background(colorResource(id = R.color.col_063041))
+//            .background(colorResource(id = R.color.col_063041))
             .padding(5.dp)
     ) {
         val imageUrl = RestConfig.BASE_IMAGE_URL + model.posterPath
