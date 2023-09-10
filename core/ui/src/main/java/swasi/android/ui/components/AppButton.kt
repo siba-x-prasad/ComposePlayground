@@ -36,7 +36,7 @@ import swasi.android.ui.R
 fun AppButton(
     modifier: Modifier = Modifier,
     text: String = "Hello",
-    buttonColor: Color = Color.Red,
+    buttonColor: Color = Colors.teal700,
     textColor: Color = Color.White,
     enabled: Boolean = true,
     onClick: (() -> Unit),
@@ -139,7 +139,7 @@ fun AppButtonDisablePreview() {
 fun AppButtonWithIcon(
     modifier: Modifier = Modifier,
     title: String = "Hello",
-    buttonColor: Color = Color.Red,
+    buttonColor: Color = Colors.teal700,
     textColor: Color = Color.White,
     enabled: Boolean = true,
     onClick: (() -> Unit),
@@ -307,8 +307,8 @@ fun ButtonWithBorder() {
         onClick = {
             //your onclick code
         },
-        border = BorderStroke(1.dp, Color.Red),
-        colors = ButtonDefaults.outlinedButtonColors(contentColor = Color.Red)
+        border = BorderStroke(1.dp, Colors.teal700),
+        colors = ButtonDefaults.outlinedButtonColors(contentColor = Colors.teal700)
     ) {
         Text(text = "Button with border", color = Color.DarkGray)
     }

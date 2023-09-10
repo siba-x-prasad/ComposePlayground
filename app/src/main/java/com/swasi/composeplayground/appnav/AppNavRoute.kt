@@ -1,5 +1,6 @@
 package com.swasi.composeplayground.appnav
 
+
 sealed class AppNavRoute(val path: String) {
 
     object Splash : AppNavRoute("splash")

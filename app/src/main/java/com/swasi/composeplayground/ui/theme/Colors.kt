@@ -9,6 +9,12 @@ object Colors {
     val teal200 = Color(0xFF03DAC5)
     val teal700 = Color(0xFF018786)
 
+    val black = Color(0xFF000000)
+    val white = Color(0xFFFFFFFF)
+    val red = Color(0xFFFF0000)
+    val green = Color(0xFF00FF00)
+    val blue = Color(0xFF0000FF)
+
     fun getColorFromHex(colorString: String): Color {
         return Color(android.graphics.Color.parseColor("#$colorString"))
     }

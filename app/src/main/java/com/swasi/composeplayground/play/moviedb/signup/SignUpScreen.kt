@@ -1,34 +1,45 @@
 package com.swasi.composeplayground.play.moviedb.signup
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
-import androidx.compose.material.Scaffold
-import androidx.compose.material.TopAppBar
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Phone
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.swasi.composeplayground.components.AppButton
-import com.swasi.composeplayground.components.AppOutLinedTextFieldWithIcon
-import com.swasi.composeplayground.components.AppOutlinedButton
-import com.swasi.composeplayground.components.ProgressIndicator
+import com.swasi.composeplayground.ui.theme.Colors
 import com.swasi.composeplayground.ui.theme.ComposePlaygroundTheme
+import swasi.android.ui.components.AppButton
+import swasi.android.ui.components.AppOutLinedTextFieldWithIcon
+import swasi.android.ui.components.AppOutlinedButton
+import swasi.android.ui.components.ProgressIndicator
 
 /**
  * Created by Sibaprasad Mohanty on 11/03/2023.
  * siba.x.prasad@gmail.com
  */
+@OptIn(ExperimentalComposeUiApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun SignUpScreen(
     viewModel: SignUpViewModel = hiltViewModel(),
@@ -50,7 +61,15 @@ fun SignUpScreen(
                             color = Color.White
                         )
                     }
-                })
+                },
+                colors = TopAppBarColors(
+                    containerColor = Colors.teal700,
+                    scrolledContainerColor = Colors.white,
+                    navigationIconContentColor = Colors.white,
+                    titleContentColor = Colors.white,
+                    actionIconContentColor = Colors.white
+                )
+            )
         },
         content = {
             ComposePlaygroundTheme(darkTheme = false) {

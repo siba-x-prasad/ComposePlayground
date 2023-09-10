@@ -34,11 +34,11 @@ import com.swasi.composeplayground.ui.theme.Colors
 @ExperimentalComposeUiApi
 @Composable
 fun ApButton(
-    title: String = "Hello", buttonColor: Color = Color.Red, textColor: Color = Color.White,
+    title: String = "Hello", buttonColor: Color = Colors.teal700, textColor: Color = Color.White,
     enabled: Boolean = true, onClick: (() -> Unit), radious: Int = 8
 ) {
 
-    val color = remember { mutableStateOf(Color.Red) }
+    val color = remember { mutableStateOf(Colors.teal700) }
 
     Button(
         onClick = onClick,
@@ -197,8 +197,8 @@ fun ButtonWithBorder() {
         onClick = {
             //your onclick code
         },
-        border = BorderStroke(1.dp, Color.Red),
-        colors = ButtonDefaults.outlinedButtonColors(contentColor = Color.Red)
+        border = BorderStroke(1.dp, Colors.teal700),
+        colors = ButtonDefaults.outlinedButtonColors(contentColor = Colors.teal700)
     ) {
         Text(text = "Button with border", color = Color.DarkGray)
     }
@@ -208,7 +208,6 @@ fun ButtonWithBorder() {
 fun ButtonWithElevation() {
     Button(
         onClick = {
-            //your onclick code here
         }, elevation = ButtonDefaults.buttonElevation(
             defaultElevation = 10.dp,
             pressedElevation = 15.dp,

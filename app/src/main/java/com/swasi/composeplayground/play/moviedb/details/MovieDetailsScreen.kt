@@ -3,10 +3,7 @@ package com.swasi.composeplayground.play.moviedb.details
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Scaffold
-import androidx.compose.material.TopAppBar
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -15,11 +12,12 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
-import com.swasi.composeplayground.components.AppText
 import com.swasi.composeplayground.navigation.common.DefaultButton
-import com.swasi.composeplayground.network.RestConfig
-import com.swasi.composeplayground.network.response.MovieData
+import com.swasi.composeplayground.ui.theme.Colors
 import com.swasi.composeplayground.ui.theme.ComposePlaygroundTheme
+import swasi.android.model.MovieData
+import swasi.android.network.RestConfig
+import swasi.android.ui.components.AppText
 
 
 /**
@@ -27,6 +25,7 @@ import com.swasi.composeplayground.ui.theme.ComposePlaygroundTheme
  * siba.x.prasad@gmail.com
  */
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MovieDetailsScreen(
     selectedMovie: MovieData? = null,
@@ -45,7 +44,15 @@ fun MovieDetailsScreen(
                             color = Color.White
                         )
                     }
-                })
+                },
+                colors = TopAppBarColors(
+                    containerColor = Colors.teal700,
+                    scrolledContainerColor = Colors.white,
+                    navigationIconContentColor = Colors.white,
+                    titleContentColor = Colors.white,
+                    actionIconContentColor = Colors.white
+                )
+            )
         },
         content = {
 

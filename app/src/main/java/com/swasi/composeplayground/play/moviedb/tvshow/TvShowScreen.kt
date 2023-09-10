@@ -15,9 +15,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.Scaffold
-import androidx.compose.material.TopAppBar
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -32,16 +30,18 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberAsyncImagePainter
 import com.swasi.composeplayground.R
-import com.swasi.composeplayground.components.ProgressIndicator
-import com.swasi.composeplayground.network.RestConfig
-import com.swasi.composeplayground.network.response.ItemResult
+import com.swasi.composeplayground.ui.theme.Colors
+import swasi.android.model.ItemResult
 import swasi.android.moviedb.tvshow.TvShowViewModel
+import swasi.android.network.RestConfig
+import swasi.android.ui.components.ProgressIndicator
 
 /**
  * Created by Sibaprasad Mohanty on 11/03/2023.
  * siba.x.prasad@gmail.com
  */
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TvShowScreen(viewModel: TvShowViewModel = hiltViewModel()) {
     LaunchedEffect(Unit, block = {
@@ -57,7 +57,15 @@ fun TvShowScreen(viewModel: TvShowViewModel = hiltViewModel()) {
                             color = Color.White
                         )
                     }
-                })
+                },
+                colors = TopAppBarColors(
+                    containerColor = Colors.teal700,
+                    scrolledContainerColor = Colors.white,
+                    navigationIconContentColor = Colors.white,
+                    titleContentColor = Colors.white,
+                    actionIconContentColor = Colors.white
+                )
+            )
         },
         content = {
             when (val state = viewModel.tvShowState.collectAsState().value) {
@@ -87,7 +95,7 @@ fun TvShowScreen(viewModel: TvShowViewModel = hiltViewModel()) {
                             verticalArrangement = Arrangement.spacedBy(1.dp)
                         ) {
                             items(state.data) { fruit ->
-                                TvShowItemRow(fruit)
+                                // TvShowItemRow(fruit)
                             }
                         }
                     }

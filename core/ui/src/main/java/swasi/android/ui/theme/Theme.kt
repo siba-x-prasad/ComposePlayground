@@ -15,6 +15,12 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.ViewCompat
+import swasi.android.ui.theme.Pink40
+import swasi.android.ui.theme.Pink80
+import swasi.android.ui.theme.Purple40
+import swasi.android.ui.theme.Purple80
+import swasi.android.ui.theme.PurpleGrey40
+import swasi.android.ui.theme.PurpleGrey80
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,

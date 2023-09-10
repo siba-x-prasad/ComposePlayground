@@ -6,9 +6,11 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.Scaffold
-import androidx.compose.material.TopAppBar
-import androidx.compose.material3.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.AccountCircle
+import androidx.compose.material.icons.outlined.ArrowBack
+import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.SideEffect
@@ -26,8 +28,9 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.google.gson.Gson
 import com.swasi.composeplayground.R
-import com.swasi.composeplayground.components.ProgressIndicator
 import com.swasi.composeplayground.play.state.UiState
+import com.swasi.composeplayground.ui.theme.Colors
+import swasi.android.ui.components.ProgressIndicator
 
 /**
  * Created by Sibaprasad Mohanty on 14/03/2023.
@@ -35,10 +38,12 @@ import com.swasi.composeplayground.play.state.UiState
  */
 
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FruitListScreen(
     viewModel: FruitListViewModel = hiltViewModel(),
-    navigateToFruitDetails: (String) -> Unit
+    navigateToFruitDetails: (String) -> Unit,
+    navigateToHomeScreen: () -> Unit
 ) {
 
     LaunchedEffect(Unit, block = {
@@ -52,9 +57,46 @@ fun FruitListScreen(
                     Row {
                         Text(
                             "Fruit List",
-                            color = Color.White
+                            color = Colors.white
                         )
                     }
+                },
+                colors = TopAppBarColors(
+                    containerColor = Colors.teal700,
+                    scrolledContainerColor = Colors.white,
+                    navigationIconContentColor = Colors.white,
+                    titleContentColor = Colors.white,
+                    actionIconContentColor = Colors.white
+                ),
+                actions = {
+                    IconButton(onClick = {
+                        navigateToHomeScreen()
+                    }) {
+                        Icon(
+                            Icons.Outlined.Home,
+                            "Home"
+                        )
+                    }
+
+                    IconButton(onClick = {
+
+                    }) {
+                        Icon(
+                            Icons.Outlined.ArrowBack,
+                            "Movie"
+                        )
+                    }
+
+                    IconButton(
+                        onClick = {
+
+                        }) {
+                        Icon(
+                            Icons.Outlined.AccountCircle,
+                            "Favorite"
+                        )
+                    }
+
                 })
         }
     ) {

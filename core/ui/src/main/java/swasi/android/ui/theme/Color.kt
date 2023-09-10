@@ -1,4 +1,4 @@
-package com.swasi.composeplayground.ui.theme
+package swasi.android.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

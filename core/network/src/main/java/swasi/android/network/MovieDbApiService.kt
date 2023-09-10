@@ -5,7 +5,6 @@ import retrofit2.http.Query
 import swasi.android.model.MovieResponse
 import swasi.android.model.PopularTvShowResponse
 
-
 /**
  * Created by Sibaprasad Mohanty on 11/03/2023.
  * siba.x.prasad@gmail.com

@@ -1,10 +1,13 @@
 package com.swasi.composeplayground.play.moviedb.forgotpwd
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.ModalBottomSheetValue
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.rememberModalBottomSheetState
 import androidx.compose.material3.Button
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
@@ -12,8 +15,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
-import com.swasi.composeplayground.components.AppOutLinedTextFieldWithIcon
 import kotlinx.coroutines.launch
+import swasi.android.ui.components.AppOutLinedTextFieldWithIcon
+import swasi.android.ui.components.ModalBottomSheetLayout
 
 
 /**

@@ -5,7 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.rememberNavController
-import com.swasi.composeplayground.play.moviedb.navigation.MovieNavGraph
+import com.swasi.composeplayground.appnav.appmoviedb.MovieNavGraph
 import com.swasi.composeplayground.ui.theme.ComposePlaygroundTheme
 import dagger.hilt.android.AndroidEntryPoint
 

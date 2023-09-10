@@ -3,10 +3,7 @@ package com.swasi.composeplayground.play.moviedb.fruit
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Scaffold
-import androidx.compose.material.TopAppBar
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -16,15 +13,16 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.google.gson.Gson
-import com.swasi.composeplayground.components.AppText
 import com.swasi.composeplayground.navigation.common.DefaultButton
 import com.swasi.composeplayground.ui.theme.ComposePlaygroundTheme
+import swasi.android.ui.components.AppText
 
 /**
  * Created by Sibaprasad Mohanty on 20/03/2023.
  * siba.x.prasad@gmail.com
  */
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FruitDetailsScreen(
     fruitDataInJson: String?,
