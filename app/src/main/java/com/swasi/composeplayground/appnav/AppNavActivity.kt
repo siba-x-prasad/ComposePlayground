@@ -45,7 +45,6 @@ private fun MainScreen() {
     MovieNavGraph(navController)
 }
 
-
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
 @Composable
 private fun MainScreen1() {

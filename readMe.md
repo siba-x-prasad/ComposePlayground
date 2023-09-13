@@ -35,6 +35,7 @@
 - [State Management](https://github.com/siba-x-prasad/ComposePlayground/blob/main/readMe/stateManagement.md)
 - [Navigation](https://github.com/siba-x-prasad/ComposePlayground/blob/main/readMe/14.Navigation.md)
 - [TopBar & Navigation](https://github.com/siba-x-prasad/ComposePlayground/blob/main/readMe/topAppBarAndBottomNavigastionBar.md)
+- [Side Effects](https://github.com/siba-x-prasad/ComposePlayground/blob/main/readMe/sideEffect.md)
 
 ## Dependencies
 ```

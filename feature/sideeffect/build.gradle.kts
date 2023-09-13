@@ -2,8 +2,8 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.org.jetbrains.kotlin.android)
-    id("dagger.hilt.android.plugin")
-    id("kotlin-kapt")
+//    id("dagger.hilt.android.plugin")
+//    id("kotlin-kapt")
 }
 
 android {
@@ -44,13 +44,14 @@ android {
 dependencies {
 
     implementation(libs.bundles.compose)
-    implementation(libs.hilt)
-    kapt(libs.hiltcompiler)
-    implementation(libs.coreKtx)
+    implementation(libs.coil.compose)
     implementation(libs.appcompat)
-    implementation(libs.material)
+    implementation(libs.gson)
+    implementation(libs.appcompat)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidxTestExtJunit)
     androidTestImplementation(libs.espressoCore)
     implementation(project(mapOf("path" to ":core:ui")))
+    implementation(project(mapOf("path" to ":core:model")))
+    implementation(project(mapOf("path" to ":core:network")))
 }
