@@ -1,5 +1,6 @@
 package swasi.android.network
 
+import okhttp3.ResponseBody
 import retrofit2.http.GET
 import retrofit2.http.Query
 import swasi.android.model.MovieResponse
@@ -13,7 +14,7 @@ import swasi.android.model.PopularTvShowResponse
 interface MovieDbApiService {
 
     @GET("tv/popular?")
-    suspend fun getPopularTvShows(page: Int): PopularTvShowResponse
+    suspend fun getPopularTvShows(page: Int): ResponseBody
 
     @GET("tv/popular")
     suspend fun getPopularTvShowsByFlow(

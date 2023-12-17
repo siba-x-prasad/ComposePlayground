@@ -1,5 +1,5 @@
 [versions]
-android-gradle-plugin = "8.1.1"
+android-gradle-plugin = "8.2.0"
 appcompat = "1.6.1"
 androidx-legacy-support = "1.0.0"
 coil-compose = "2.2.2"
