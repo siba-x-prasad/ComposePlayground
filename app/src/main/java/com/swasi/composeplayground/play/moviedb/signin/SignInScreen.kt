@@ -35,8 +35,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
-import com.swasi.composeplayground.ui.theme.Colors
 import com.swasi.composeplayground.ui.theme.ComposePlaygroundTheme
+import swasi.android.component.theme.Colors
 import swasi.android.ui.components.AppButton
 import swasi.android.ui.components.AppOutLinedTextFieldWithIcon
 import swasi.android.ui.components.AppOutlinedButton

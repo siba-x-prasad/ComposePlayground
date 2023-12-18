@@ -30,7 +30,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberAsyncImagePainter
 import com.swasi.composeplayground.R
-import com.swasi.composeplayground.ui.theme.Colors
+import swasi.android.component.theme.Colors
 import swasi.android.model.ItemResult
 import swasi.android.moviedb.tvshow.TvShowViewModel
 import swasi.android.network.RestConfig

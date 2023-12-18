@@ -2,7 +2,11 @@ package swasi.android.account.splash
 
 import android.util.Log
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -14,8 +18,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.swasi.composeplayground.ui.theme.ComposePlaygroundTheme
 import swasi.android.account.R
+import swasi.android.component.theme.ComponentTheme
 import swasi.android.ui.components.AppButton
 import swasi.android.ui.components.AppImageView
 import swasi.android.ui.components.ProgressIndicator
@@ -35,7 +39,7 @@ fun SplashScreen(
         Log.i("SplashScreen", "Splash Screen Composed")
         onDispose { Log.i("SplashScreen", "Splash Screen  DISPOSED") }
     }
-    ComposePlaygroundTheme(darkTheme = false) {
+    ComponentTheme(darkTheme = false) {
         Surface(
             modifier = Modifier.fillMaxSize(),
             color = Color.White

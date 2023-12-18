@@ -13,8 +13,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
 import com.swasi.composeplayground.navigation.common.DefaultButton
-import com.swasi.composeplayground.ui.theme.Colors
 import com.swasi.composeplayground.ui.theme.ComposePlaygroundTheme
+import swasi.android.component.theme.Colors
 import swasi.android.model.MovieData
 import swasi.android.network.RestConfig
 import swasi.android.ui.components.AppText

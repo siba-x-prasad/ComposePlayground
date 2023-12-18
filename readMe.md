@@ -5,6 +5,8 @@
 - https://github.com/myofficework000/Jetpack-Compose-All-In-One-Guide/tree/master
 - https://github.com/SmartToolFactory/Jetpack-Compose-Tutorials
 - https://github.com/vinaygaba/Learn-Jetpack-Compose-By-Example
+- [Navigation Drawer](https://github.com/Foxpace/JetpackCompose-AppDrawerExample/tree/master)
+- [Navigation with Multiple Nav Controller](https://github.com/bajpaiNikhil/navigationInCompose/tree/master)
 
 ## Important Links
 

@@ -28,8 +28,8 @@ import androidx.compose.ui.input.pointer.pointerInteropFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.swasi.composeplayground.ui.theme.Colors
 import swasi.android.ui.R
+import swasi.android.ui.theme.Colors
 
 @ExperimentalComposeUiApi
 @Composable

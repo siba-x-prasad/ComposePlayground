@@ -8,7 +8,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
-import com.swasi.composeplayground.ui.theme.Colors
+import swasi.android.ui.theme.Colors
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
