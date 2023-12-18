@@ -41,7 +41,7 @@ fun Image(
 @Composable
 fun SimpleImage() {
     Image(
-        painter = painterResource(id = R.drawable.andy_rubin),
+        painter = painterResource(id = R.drawable.ic_rabit),
         contentDescription = "Andy Rubin",
         modifier = Modifier.fillMaxWidth()
     )
@@ -50,7 +50,7 @@ fun SimpleImage() {
 @Composable
 fun CircleImageView() {
     Image(
-        painter = painterResource(R.drawable.andy_rubin),
+        painter = painterResource(R.drawable.ic_rabit),
         contentDescription = "Circle Image",
         contentScale = ContentScale.Crop,
         modifier = Modifier
@@ -63,7 +63,7 @@ fun CircleImageView() {
 @Composable
 fun RoundCornerImageView() {
     Image(
-        painter = painterResource(R.drawable.andy_rubin),
+        painter = painterResource(R.drawable.ic_rabit),
         contentDescription = "Round corner image",
         contentScale = ContentScale.Crop,
         modifier = Modifier
@@ -76,7 +76,7 @@ fun RoundCornerImageView() {
 @Composable
 fun ImageWithBackgroundColor() {
     Image(
-        painter = painterResource(id = R.drawable.ic_baseline_shopping_cart_24),
+        painter = painterResource(id = R.drawable.ic_rabit),
         contentDescription = "",
         modifier = Modifier
             .size(200.dp)
@@ -88,7 +88,7 @@ fun ImageWithBackgroundColor() {
 @Composable
 fun ImageWithTint() {
     Image(
-        painter = painterResource(id = R.drawable.ic_baseline_shopping_cart_24),
+        painter = painterResource(id = R.drawable.ic_rabit),
         contentDescription = "",
         colorFilter = ColorFilter.tint(Color.Red),
         modifier = Modifier

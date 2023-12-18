@@ -97,7 +97,7 @@ fun AppRoundCornerImageView(
 @Preview
 @Composable
 fun AppImageViewPreview() {
-    val paintResource = painterResource(id = R.drawable.apple)
+    val paintResource = painterResource(id = R.drawable.ic_rabit)
     AppImageView(painter = paintResource, "")
 }
 
@@ -105,13 +105,13 @@ fun AppImageViewPreview() {
 @Preview
 @Composable
 fun AppCircleImageViewPreview() {
-    val paintResource = painterResource(id = R.drawable.apple)
+    val paintResource = painterResource(id = R.drawable.ic_rabit)
     AppCircleImageView(painter = paintResource, "")
 }
 
 @Preview
 @Composable
 fun AppRoundCornerImageViewPreview() {
-    val paintResource = painterResource(id = R.drawable.apple)
+    val paintResource = painterResource(id = R.drawable.ic_rabit)
     AppRoundCornerImageView(painter = paintResource, "")
 }

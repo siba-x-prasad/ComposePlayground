@@ -41,8 +41,8 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
-import swasi.android.ui.theme.dp_15
-import swasi.android.ui.theme.spaceSmall
+import swasi.android.component.theme.dp_15
+import swasi.android.component.theme.spaceSmall
 
 
 @Composable

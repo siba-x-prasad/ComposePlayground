@@ -1,4 +1,4 @@
-package com.swasi.composeplayground.mycomponents
+package swasi.android.component.mycomponents
 
 
 import android.view.MotionEvent
@@ -28,7 +28,7 @@ import androidx.compose.ui.input.pointer.pointerInteropFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.swasi.composeplayground.R
+import swasi.android.component.R
 import swasi.android.component.theme.Colors
 
 @ExperimentalComposeUiApi
@@ -156,7 +156,7 @@ fun ButtonWithTwoTextView() {
 fun ButtonWithIcon() {
     Button(onClick = {}) {
         Image(
-            painterResource(id = R.mipmap.ic_launcher),
+            painterResource(id = R.drawable.actor1),
             contentDescription = "Cart button icon",
             modifier = Modifier.size(20.dp)
         )

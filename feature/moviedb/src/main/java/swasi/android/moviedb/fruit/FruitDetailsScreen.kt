@@ -2,7 +2,11 @@ package swasi.android.moviedb.fruit
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
 import androidx.compose.material.TopAppBar
 import androidx.compose.material3.Surface
@@ -17,9 +21,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.google.gson.Gson
-import com.swasi.composeplayground.ui.theme.ComposePlaygroundTheme
 import swasi.android.ui.components.AppButton
 import swasi.android.ui.components.AppText
+import swasi.android.ui.theme.ComposePlaygroundTheme
 
 /**
  * Created by Sibaprasad Mohanty on 20/03/2023.

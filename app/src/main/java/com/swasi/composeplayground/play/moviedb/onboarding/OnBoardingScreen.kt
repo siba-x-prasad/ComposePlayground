@@ -31,10 +31,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.swasi.composeplayground.R
-import com.swasi.composeplayground.components.AppImageView
 import com.swasi.composeplayground.ui.theme.ComposePlaygroundTheme
 import swasi.android.component.theme.Colors
 import swasi.android.ui.components.AppButton
+import swasi.android.ui.components.AppImageView
 
 /**
  * Created by Sibaprasad Mohanty on 11/03/2023.

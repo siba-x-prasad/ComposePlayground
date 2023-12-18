@@ -1,4 +1,4 @@
-package com.swasi.composeplayground.mycomponents
+package swasi.android.component.mycomponents
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -18,7 +18,7 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.swasi.composeplayground.R
+import swasi.android.component.R
 
 
 /**

@@ -10,10 +10,10 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import swasi.android.ui.theme.dp_0
-import swasi.android.ui.theme.dp_10
-import swasi.android.ui.theme.dp_24
-import swasi.android.ui.views.internet.NetworkState
+import swasi.android.component.internet.NetworkState
+import swasi.android.component.theme.dp_0
+import swasi.android.component.theme.dp_10
+import swasi.android.component.theme.dp_24
 
 @Composable
 fun ShowSnackbar(isOffline: Boolean, contentMessage: String, snackbarHostState: SnackbarHostState) {

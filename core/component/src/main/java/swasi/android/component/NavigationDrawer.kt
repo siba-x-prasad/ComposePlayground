@@ -7,8 +7,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import swasi.android.ui.theme.sp_32
-import swasi.android.ui.theme.spaceLarge
+import swasi.android.component.theme.sp_32
+import swasi.android.component.theme.spaceLarge
 
 /*@Composable
 fun NavigationDrawer() {
