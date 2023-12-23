@@ -3,15 +3,30 @@ package com.swasi.composeplayground.youtubeTutor.list
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.*
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -21,6 +36,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.swasi.composeplayground.R
@@ -29,84 +45,101 @@ class ListExampleActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+            ListExample()
+        }
+    }
+}
 
-            var visibleWidget by remember { mutableStateOf("") }
+@Composable
+fun ListExample() {
 
-            Column(
-                Modifier
-                    .fillMaxSize()
+    var visibleWidget by remember { mutableStateOf("") }
+
+    Column(
+        Modifier
+            .fillMaxSize()
+    ) {
+
+        Column(Modifier.weight(0.2f)) {
+            Row(
+                Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center
+
             ) {
-
-                Column(Modifier.weight(0.2f)) {
-                    Row(
-                        Modifier.fillMaxWidth(),
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.Center
-
-                    ) {
-                        Button(onClick = { visibleWidget = "Row" }) {
-                            Text(text = "Row")
-                        }
-
-                        Button(onClick = { visibleWidget = "LazyRow" }) {
-                            Text(text = "LazyRow")
-                        }
-                        Button(onClick = { visibleWidget = "CustomLazyRow" }) {
-                            Text(text = "CustomLazyRow")
-                        }
-                    }
-
-                    Row(
-                        Modifier.fillMaxWidth(),
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.Center
-                    ) {
-                        Button(onClick = { visibleWidget = "Column" }) {
-                            Text(text = "Column")
-                        }
-
-                        Button(onClick = { visibleWidget = "LazyColumn" }) {
-                            Text(text = "LazyColumn")
-                        }
-                        Button(onClick = { visibleWidget = "CustomLazyColumn" }) {
-                            Text(text = "Custom LazyColumn")
-                        }
-                    }
+                Button(onClick = { visibleWidget = "Row" }) {
+                    Text(text = "Row")
                 }
 
-                Column(Modifier.weight(0.9f)) {
-                    when (visibleWidget) {
-                        "Row" -> {
-                            RowColumnView(visibleWidget)
-                        }
-                        "Column" -> {
-                            RowColumnView(visibleWidget)
-                        }
-                        "LazyRow" -> {
-                            ListView(visibleWidget)
-                        }
-                        "LazyColumn" -> {
-                            ListView(visibleWidget)
-                        }
-                        "CustomLazyRow" -> {
-                            CustomListView("Custom Row")
-                        }
-                        "CustomLazyColumn" -> {
-                            CustomListView("Custom Column")
-                        }
-                        else -> {
+                Button(onClick = { visibleWidget = "LazyRow" }) {
+                    Text(text = "LazyRow")
+                }
+                Button(onClick = { visibleWidget = "CustomLazyRow" }) {
+                    Text(text = "CustomLazyRow")
+                }
+            }
 
-                        }
-                    }
+            Row(
+                Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center
+            ) {
+                Button(onClick = { visibleWidget = "Column" }) {
+                    Text(text = "Column")
+                }
+
+                Button(onClick = { visibleWidget = "LazyColumn" }) {
+                    Text(text = "LazyColumn")
+                }
+                Button(onClick = { visibleWidget = "CustomLazyColumn" }) {
+                    Text(text = "Custom LazyColumn")
+                }
+            }
+        }
+
+        Column(Modifier.weight(0.9f)) {
+            when (visibleWidget) {
+                "Row" -> {
+                    RowColumnView(visibleWidget)
+                }
+
+                "Column" -> {
+                    RowColumnView(visibleWidget)
+                }
+
+                "LazyRow" -> {
+                    ListView(visibleWidget)
+                }
+
+                "LazyColumn" -> {
+                    ListView(visibleWidget)
+                }
+
+                "CustomLazyRow" -> {
+                    CustomListView("Custom Row")
+                }
+
+                "CustomLazyColumn" -> {
+                    CustomListView("Custom Column")
+                }
+
+                else -> {
+
                 }
             }
         }
     }
 }
 
+
+@Preview
+@Composable
+fun ListExamplePreview() {
+    ListExample()
+}
+
 @Composable
 fun RowColumnView(type: String) {
-
     val scrollState = rememberScrollState()
 
     if (type == "Column") {
