@@ -29,6 +29,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
+import androidx.compose.material3.Card
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -270,7 +271,9 @@ fun SimpleLazyListItem(text: String, textStyle: TextStyle) {
             )
             .padding(10.dp)
             .clickable(enabled = true) {
-                Toast.makeText(context, "Clicked $text", Toast.LENGTH_SHORT)
+                Toast
+                    .makeText(context, "Clicked $text", Toast.LENGTH_SHORT)
+                    .show()
             }
     )
     Spacer(modifier = Modifier.width(20.dp))
@@ -278,6 +281,7 @@ fun SimpleLazyListItem(text: String, textStyle: TextStyle) {
 
 @Composable
 fun CustomListView(type: String) {
+    val context = LocalContext.current
     if (type == ListConstants.CUSTOM_LAZY_ROW) {
         LazyRow(
             modifier = Modifier
@@ -299,7 +303,9 @@ fun CustomListView(type: String) {
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             items(fruitsList) { model ->
-                ListRow(model = model)
+                ListRow(model = model) {
+                    Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }
@@ -308,36 +314,38 @@ fun CustomListView(type: String) {
 data class FruitModel(val name: String, val image: Int)
 
 @Composable
-fun ListRow(model: FruitModel) {
-    val context = LocalContext.current
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
+fun ListRow(model: FruitModel, onClick: (msg: String) -> Unit) {
+    Card(
         modifier = Modifier
-            .wrapContentHeight()
-            .fillMaxWidth()
-            .background(
-                color = Color.Gray,
-                shape = RoundedCornerShape(10.dp)
-            )
-            .padding(10.dp)
-            .clickable(enabled = true) {
-                Toast.makeText(context, "Clicked ${model.name}", Toast.LENGTH_SHORT)
-            }
+            .padding(vertical = 4.dp, horizontal = 8.dp)
+            .clickable { onClick(model.name) }
     ) {
-        Image(
-            painter = painterResource(id = model.image),
-            contentDescription = "",
-            contentScale = ContentScale.Crop,
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
-                .size(100.dp)
-                .padding(5.dp)
-        )
-        Text(
-            text = model.name,
-            fontSize = 24.sp,
-            fontWeight = FontWeight.SemiBold,
-            color = Color.White
-        )
+                .wrapContentHeight()
+                .fillMaxWidth()
+                .background(
+                    color = Color.Gray,
+                    shape = RoundedCornerShape(10.dp)
+                )
+                .padding(10.dp)
+        ) {
+            Image(
+                painter = painterResource(id = model.image),
+                contentDescription = "",
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .size(100.dp)
+                    .padding(5.dp)
+            )
+            Text(
+                text = model.name,
+                fontSize = 24.sp,
+                fontWeight = FontWeight.SemiBold,
+                color = Color.White
+            )
+        }
     }
 }
 
@@ -355,7 +363,9 @@ fun ListColumn(model: FruitModel) {
             )
             .padding(10.dp)
             .clickable(enabled = true) {
-                Toast.makeText(context, "Clicked ${model.name}", Toast.LENGTH_SHORT)
+                Toast
+                    .makeText(context, "Clicked ${model.name}", Toast.LENGTH_SHORT)
+                    .show()
             }
     ) {
         Image(
