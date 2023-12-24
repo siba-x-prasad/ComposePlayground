@@ -27,6 +27,7 @@
             <option value="$PROJECT_DIR$/feature/account" />
             <option value="$PROJECT_DIR$/feature/home" />
             <option value="$PROJECT_DIR$/feature/moviedb" />
+            <option value="$PROJECT_DIR$/feature/play" />
             <option value="$PROJECT_DIR$/feature/profile" />
             <option value="$PROJECT_DIR$/feature/sideeffect" />
           </set>
