@@ -155,7 +155,6 @@ fun RowColumnScreen(visibleWidget: String) {
     }
 }
 
-
 @Preview
 @Composable
 fun ListExamplePreview() {
@@ -270,7 +269,7 @@ fun SimpleLazyListItem(text: String, textStyle: TextStyle) {
                 shape = RoundedCornerShape(10.dp)
             )
             .padding(10.dp)
-            .clickable {
+            .clickable(enabled = true) {
                 Toast.makeText(context, "Clicked $text", Toast.LENGTH_SHORT)
             }
     )
@@ -321,7 +320,7 @@ fun ListRow(model: FruitModel) {
                 shape = RoundedCornerShape(10.dp)
             )
             .padding(10.dp)
-            .clickable {
+            .clickable(enabled = true) {
                 Toast.makeText(context, "Clicked ${model.name}", Toast.LENGTH_SHORT)
             }
     ) {
@@ -353,8 +352,9 @@ fun ListColumn(model: FruitModel) {
             .background(
                 color = Color.Gray,
                 shape = RoundedCornerShape(10.dp)
-            ).padding(10.dp)
-            .clickable {
+            )
+            .padding(10.dp)
+            .clickable(enabled = true) {
                 Toast.makeText(context, "Clicked ${model.name}", Toast.LENGTH_SHORT)
             }
     ) {

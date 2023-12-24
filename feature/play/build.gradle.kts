@@ -25,11 +25,21 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
+    }
+
+    buildFeatures {
+        compose = true
+        dataBinding = true
+        viewBinding = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.4.4"
     }
 }
 
@@ -40,4 +50,8 @@ dependencies {
     testImplementation(libs.junit)
     implementation(project(mapOf("path" to ":core:ui")))
     implementation(project(mapOf("path" to ":core:component")))
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidxTestExtJunit)
+    androidTestImplementation(libs.espressoCore)
+    androidTestImplementation(libs.ui.test.junit4)
 }

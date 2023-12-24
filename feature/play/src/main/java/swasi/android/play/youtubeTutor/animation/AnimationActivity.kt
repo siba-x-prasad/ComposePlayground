@@ -36,7 +36,7 @@ class AnimationActivity : ComponentActivity() {
                     durationMillis = 3000,
                     delayMillis = 300,
                     easing = LinearOutSlowInEasing
-                )
+                ), label = ""
 //            keyframes {
 //                durationMillis = 5000
 //                sizeState at 0 with LinearEasing
