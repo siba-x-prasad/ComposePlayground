@@ -1,4 +1,4 @@
-package com.swasi.composeplayground.youtubeTutor.composeEffect
+package swasi.android.play.youtubeTutor.composeEffect
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

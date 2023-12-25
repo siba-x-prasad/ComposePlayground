@@ -2,19 +2,22 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="CheckColorChange (1)">
+      <entry key="LaunchedEffectExample1">
         <State />
       </entry>
-      <entry key="ListExamplePreview">
+      <entry key="NavigationScreenPreview">
         <State />
       </entry>
-      <entry key="ListExamplePreview (1)">
+      <entry key="RememberCoroutineScopeExamplePreview">
+        <State />
+      </entry>
+      <entry key="RememberUpdateStatePreview">
         <State />
       </entry>
       <entry key="app">
         <State />
       </entry>
-      <entry key="showSnackBarPreview">
+      <entry key="rememberUpdatedStatePreview">
         <State />
       </entry>
     </value>

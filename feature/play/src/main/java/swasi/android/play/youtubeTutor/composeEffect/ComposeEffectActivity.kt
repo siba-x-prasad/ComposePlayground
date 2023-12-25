@@ -22,7 +22,6 @@ import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
-import com.swasi.composeplayground.youtubeTutor.composeEffect.LaunchedEffectViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 

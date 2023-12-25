@@ -26,33 +26,44 @@ class StateManagementActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
+            StateCompose()
+        }
+    }
+}
 
-            var visible by remember { mutableStateOf("") }
+@Composable
+fun StateCompose() {
+    var visible by remember { mutableStateOf("") }
 
-            Column(Modifier.fillMaxSize()) {
-                val color = remember {
-                    mutableStateOf(Color.Yellow)
-                }
-                ColorBox(
-                    Modifier
-                        .weight(1f)
-                        .fillMaxSize()
-                ) {
-                    color.value = it
-                }
-                Box(
-                    modifier = Modifier
-                        .background(color.value)
-                        .weight(1f)
-                        .fillMaxSize()
-                ) {
-
-                }
-            }
+    Column(Modifier.fillMaxSize()) {
+        val color = remember {
+            mutableStateOf(Color.Yellow)
+        }
+        ColorBox(
+            Modifier
+                .weight(1f)
+                .fillMaxSize()
+        ) {
+            color.value = it
+        }
+        Box(
+            modifier = Modifier
+                .background(color.value)
+                .weight(1f)
+                .fillMaxSize()
+        ) {
 
         }
     }
 }
+
+
+@Preview
+@Composable
+fun StateComposePreview() {
+    StateCompose()
+}
+
 
 @Composable
 fun ColorBox(
@@ -60,18 +71,19 @@ fun ColorBox(
     updateColor: (Color) -> Unit
 ) {
 
-    Box(modifier = modifier
-        .background(Color.Red)
-        .clickable {
-            updateColor(
-                Color(
-                    Random.nextFloat(),
-                    Random.nextFloat(),
-                    Random.nextFloat(),
-                    1f
+    Box(
+        modifier = modifier
+            .background(Color.Red)
+            .clickable {
+                updateColor(
+                    Color(
+                        Random.nextFloat(),
+                        Random.nextFloat(),
+                        Random.nextFloat(),
+                        1f
+                    )
                 )
-            )
-        }
+            }
     )
 }
 

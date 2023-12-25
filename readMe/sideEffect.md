@@ -36,6 +36,43 @@
 - derivedStateOf: convert one or multiple state objects into another state
 - snapshotFlow: convert Compose's State into Flows
 
+## LaunchedEffect
+
+- **How does LaunchedEffect work?**
+- When a composition is recomposed, Jetpack Compose calls the lambda passed to LaunchedEffect.
+- This lambda should contain the code that performs the asynchronous operation.
+- Once the operation is complete, the coroutine should update the UI using the MutableState or
+  MutableStateFlow objects.
+- **Here’s a detailed breakdown of LaunchedEffect:**
+- **What it does:**
+- Launches a coroutine in the background to perform your desired side effect.
+- Ensures the coroutine starts only when the composable composition occurs.
+- Cancels the coroutine automatically when the composable is removed from the composition.
+- Allows specifying dependencies to control the coroutine execution based on changes in data or
+  state.
+- **Benefits:**
+- Improved Composability: Keeps your composable functions pure and focused on UI declaration,
+  separating side effects into background coroutines.
+- Lifecycle Awareness: Automatically starts and stops coroutines based on the composable lifecycle,
+  preventing leaks and unnecessary operations.
+- Efficient Updates: Only re-runs coroutines when their dependencies change, optimizing performance
+  and avoiding redundant work.
+
+## rememberCoroutineScope
+
+- rememberCoroutineScope is a function that is used to create a CoroutineScope that can be reused
+  across the lifecycle of a Composable function.
+- It is similar to the viewModelScope in ViewModel, but rememberCoroutineScope is designed
+  specifically for Jetpack Compose.
+- rememberCoroutineScope() is useful whenever you need to have your coroutine canceled as soon as
+  the Composable leaves the Composition.
+
+## rememberUpdatedState
+
+- reference a value in an effect that shouldn't restart if the value changes
+
+## rememberSaveable
+
 ## SideEffect
 
 - In the below function the side effect will log the count
