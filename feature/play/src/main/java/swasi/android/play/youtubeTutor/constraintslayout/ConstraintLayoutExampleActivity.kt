@@ -22,7 +22,7 @@ class ConstraintLayoutExampleActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-
+            ConstraintCompose()
         }
     }
 }
@@ -42,7 +42,7 @@ fun ConstraintCompose() {
         }
 
         constrain(redBox) {
-            top.linkTo(parent.top)
+            bottom.linkTo(parent.bottom)
             start.linkTo(greenBox.end)
             width = Dimension.value(100.dp)
             height = Dimension.value(100.dp)

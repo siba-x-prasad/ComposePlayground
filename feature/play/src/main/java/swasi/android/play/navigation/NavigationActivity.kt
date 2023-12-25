@@ -3,17 +3,23 @@ package swasi.android.play.navigation
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.Icon
+import androidx.compose.material.TopAppBar
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavController
@@ -21,7 +27,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
-import swasi.android.component.mycomponents.AppButton
+import swasi.android.component.SimpleTextButton
+import swasi.android.ui.components.AppTextView
 import swasi.android.ui.theme.ComposePlaygroundTheme
 
 class NavigationActivity : ComponentActivity() {
@@ -35,17 +42,22 @@ class NavigationActivity : ComponentActivity() {
 
 @Composable
 fun NavigationScreen() {
+    val view = LocalView.current
     ComposePlaygroundTheme {
+//        val window = (view.context as Activity).window
+//        WindowCompat.setDecorFitsSystemWindows(window, false)
+//        window.setFlags(
+//            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+//            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+//        )
         val navController = rememberNavController()
-        NavHost(navController = navController, startDestination = "auth") {
+        NavHost(navController = navController, startDestination = "about") {
             composable("about") {
-                // this will have access to other 2 routes
-                Row(
-                    Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.Center
-                ) {
-                    Button(onClick = {
+                ScreenWithNavigation(
+                    screenName = "About Us",
+                    leftButton = "Auth",
+                    rightButton = "Calendar",
+                    onLeftButtonClick = {
                         navController.navigate(
                             route = "auth"
                         ) {
@@ -53,24 +65,17 @@ fun NavigationScreen() {
                                 inclusive = true // it will be pup up from back stack
                             }
                         }
-                    }
-                    ) {
-                        Text(text = "Auth", fontSize = 14.sp)
-                    }
-
-                    Button(onClick = {
+                    },
+                    onRightButtonClick = {
                         navController.navigate(
-                            route = "calendar"
+                            route = "product"
                         ) {
-                            popUpTo("calendar") {
+                            popUpTo("product") {
                                 inclusive = true // it will be pup up from back stack
                             }
                         }
                     }
-                    ) {
-                        Text(text = "Calendar", fontSize = 14.sp)
-                    }
-                }
+                )
             }
             navigation(
                 startDestination = "Login",
@@ -78,46 +83,101 @@ fun NavigationScreen() {
             ) {
                 composable("login") {
 //                    val viewModel = it.sharedViewModel<AuthViewModel>(navController)
-
-                    Row(
-                        Modifier.fillMaxWidth(),
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.Center
-                    ) {
-
-                        AppButton(modifier = Modifier, onClick = {}, title = "LOGIN SCREEN")
-
-                        AppButton(
-                            onClick = {
-                                navController.navigate(
-                                    route = "calendar"
-                                ) {
-                                    popUpTo("auth") {
-                                        inclusive = true // it will be pup up from back stack
-                                    }
+                    ScreenWithNavigation(
+                        screenName = "Login Screen",
+                        leftButton = "Register",
+                        rightButton = "Forgot Password",
+                        onLeftButtonClick = {
+                            navController.navigate(
+                                route = "register"
+                            ) {
+                                popUpTo("auth") {
+                                    inclusive = true // it will be pup up from back stack
                                 }
-                            }, title = "Go to Calendar",
-                            modifier = Modifier
-                        )
-                    }
+                            }
+                        },
+                        onRightButtonClick = {
+                            navController.navigate(
+                                route = "forgotpassword"
+                            ) {
+                                popUpTo("auth") {
+                                    inclusive = true // it will be pup up from back stack
+                                }
+                            }
+                        }
+                    )
                 }
                 composable("register") {
                     // val viewModel = it.sharedViewModel<AuthViewModel>(navController)
+                    ScreenWithNavigation(
+                        screenName = "Register Screen",
+                        leftButton = "Login",
+                        rightButton = "ForgotPassword",
+                        onLeftButtonClick = {
+                            navController.navigate(
+                                "login"
+                            ) {
+                                popUpTo("auth") {
+                                    inclusive = true // it will be pup up from back stack
+                                }
+                            }
+                        },
+                        onRightButtonClick = {
+                            navController.navigate(
+                                route = "forgotpassword"
+                            ) {
+                                popUpTo("auth") {
+                                    inclusive = true // it will be pup up from back stack
+                                }
+                            }
+                        }
+                    )
                 }
                 composable("forgotpassword") {
                     //  val viewModel = it.sharedViewModel<AuthViewModel>(navController)
+                    ScreenWithNavigation(
+                        screenName = "About Us",
+                        leftButton = "Auth",
+                        rightButton = "product",
+                        onLeftButtonClick = {},
+                        onRightButtonClick = {}
+                    )
                 }
             }
 
             navigation(
-                startDestination = "calendar_overview",
-                route = "calendar"
+                startDestination = "productList",
+                route = "product"
             ) {
-                composable("calendar_overview") {
-                    // val viewModel = it.sharedViewModel<AuthViewModel>(navController)
+                composable("productList") {
+                    ScreenWithNavigation(
+                        screenName = "Product List",
+                        leftButton = "Auth",
+                        rightButton = "productDetails",
+                        onLeftButtonClick = {
+                            navController.navigate(
+                                route = "auth"
+                            )
+                        },
+                        onRightButtonClick = {
+                            navController.navigate(
+                                route = "productDetails"
+                            )
+                        }
+                    )
                 }
-                composable("calendar_entry") {
-                    // val viewModel = it.sharedViewModel<AuthViewModel>(navController)
+                composable("productDetails") {
+                    ScreenWithNavigation(
+                        screenName = "Product Details",
+                        leftButton = "productList",
+                        rightButton = "productList",
+                        onLeftButtonClick = {
+                            navController.navigate(
+                                route = "productList"
+                            )
+                        },
+                        onRightButtonClick = {}
+                    )
                 }
             }
         }
@@ -128,6 +188,57 @@ fun NavigationScreen() {
 @Composable
 fun NavigationScreenPreview() {
     NavigationScreen()
+}
+
+@Composable
+fun ScreenWithNavigation(
+    screenName: String,
+    leftButton: String,
+    rightButton: String,
+    onLeftButtonClick: () -> Unit,
+    onRightButtonClick: () -> Unit
+) {
+
+    Box(modifier = Modifier.fillMaxSize()) {
+
+        TopAppBar(
+            title = { Text(text = screenName) },
+            contentColor = Color.Blue,
+            navigationIcon = {
+                Icon(Icons.Filled.Menu, "menu", modifier = Modifier.clickable {
+
+                })
+            },
+            modifier = Modifier.align(Alignment.TopCenter)
+        )
+
+        AppTextView(
+            text = screenName, color = Color.Black, modifier = Modifier.align(
+                Alignment.Center
+            )
+        )
+
+        Button(
+            onClick = { onLeftButtonClick() },
+            modifier = Modifier.align(Alignment.BottomStart)
+        ) {
+            Text(text = leftButton)
+        }
+
+        SimpleTextButton(
+            buttonName = rightButton,
+            modifier = Modifier.align(Alignment.BottomEnd),
+            textColor = Color.White,
+            buttonColors = ButtonColors(
+                Color.Black,
+                Color.Blue,
+                Color.Gray,
+                Color.Green
+            )
+        ) {
+            onRightButtonClick()
+        }
+    }
 }
 
 @Composable
