@@ -1,5 +1,5 @@
 [versions]
-android-gradle-plugin = "8.2.0"
+android-gradle-plugin = "8.2.2"
 androidx-navigation-compose = "2.7.1"
 androidx-navigation-runtime-ktx = "2.7.6"
 appcompat = "1.6.1"
