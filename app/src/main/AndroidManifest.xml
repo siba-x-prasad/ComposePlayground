@@ -3,7 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.swasi.composeplayground">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
+        android:name=".app.ComposeApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -12,42 +18,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ComposePlayground"
+        android:requestLegacyExternalStorage="true"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".youtubeTutor.animation.AnimationActivity"
-            android:exported="false" />
+            android:name=".play.moviedb.MovieDbActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.ComposePlayground">
+            <!--            <intent-filter>-->
+            <!--                <action android:name="android.intent.action.MAIN" />-->
+
+            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
+            <!--            </intent-filter>-->
+        </activity>
+
         <activity
-            android:name=".youtubeTutor.composeEffect.ComposeEffectActivity"
-            android:exported="false" />
-        <activity
-            android:name=".youtubeTutor.constraintslayout.ConstraintLayoutExampleActivity"
-            android:exported="false" />
-        <activity
-            android:name=".youtubeTutor.list.ListExampleActivity"
-            android:exported="false" />
-        <activity
-            android:name=".youtubeTutor.scaffolds.AppBarAndSnackbarActivity"
-            android:exported="false" />
-        <activity
-            android:name=".youtubeTutor.scaffolds.NavigationDrawerActivity"
-            android:exported="false" />
-        <activity
-            android:name=".youtubeTutor.snackbars.SnackbarActivity"
-            android:exported="false" />
-        <activity
-            android:name=".youtubeTutor.btntxtfields.ButtonTextSnackBarActivity"
-            android:exported="false" />
-        <activity
-            android:name=".youtubeTutor.stateManagement.StateManagementActivity"
-            android:exported="false" />
-        <activity
-            android:name=".componentExamples.TextFieldActivity"
-            android:exported="false" />
-        <activity
-            android:name=".youtubeTutor.imageCard.ImageCardActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
+            android:name=".appnav.AppNavActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.ComposePlayground">
@@ -57,8 +44,44 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".navigation.NavigationActivity"
+            android:exported="false">
 
-        <activity android:name=".navigation.NavigationActivity"/>
+        </activity>
+        <activity
+            android:name="swasi.android.play.youtubeTutor.animation.AnimationActivity"
+            android:exported="false" />
+        <activity
+            android:name="swasi.android.play.youtubeTutor.composeEffect.ComposeEffectActivity"
+            android:exported="false" />
+        <activity
+            android:name="swasi.android.play.youtubeTutor.constraintslayout.ConstraintLayoutExampleActivity"
+            android:exported="false" />
+        <activity
+            android:name="swasi.android.play.youtubeTutor.list.ListExampleActivity"
+            android:exported="false" />
+        <activity
+            android:name="swasi.android.play.youtubeTutor.scaffolds.AppBarAndSnackbarActivity"
+            android:exported="false" />
+        <activity
+            android:name="swasi.android.play.youtubeTutor.scaffolds.NavigationDrawerActivity"
+            android:exported="false" />
+        <activity
+            android:name="swasi.android.play.youtubeTutor.snackbars.SnackbarActivity"
+            android:exported="false" />
+        <activity
+            android:name="swasi.android.play.youtubeTutor.btntxtfields.ButtonTextSnackBarActivity"
+            android:exported="false" />
+        <activity
+            android:name="swasi.android.play.youtubeTutor.stateManagement.StateManagementActivity"
+            android:exported="false" />
+        <activity
+            android:name=".componentExamples.TextFieldActivity"
+            android:exported="false" />
+        <activity
+            android:name="swasi.android.play.youtubeTutor.imageCard.ImageCardActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

@@ -1,6 +1,7 @@
 package com.swasi.composeplayground.navigation.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -14,6 +15,10 @@ import com.swasi.composeplayground.navigation.screens.SearchScreen
 
 @Composable
 fun NavGraph(navController: NavHostController) {
+
+    LaunchedEffect(Unit) {
+
+    }
 
     NavHost(
         navController = navController,

@@ -12,7 +12,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.swasi.composeplayground.navigation.NavigationActivity
-import com.swasi.composeplayground.youtubeTutor.constraintslayout.ConstraintLayoutExampleActivity
 import com.swasi.composeplayground.ui.theme.ComposePlaygroundTheme
 
 class MainActivity : ComponentActivity() {
