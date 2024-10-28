@@ -25,8 +25,8 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
-import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -34,6 +34,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.compose.LocalLifecycleOwner
 import swasi.android.ui.components.AppButton
 import swasi.android.ui.components.AppOutLinedTextFieldWithIcon
 import swasi.android.ui.components.AppOutlinedButton
@@ -154,5 +155,6 @@ fun SignInScreen(
 @Preview
 @Composable
 fun SignInScreenPreview() {
+    val context = LocalContext.current
     SignInScreen(LocalLifecycleOwner.current, SignInViewModel(), {}, {}, {})
 }

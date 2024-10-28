@@ -18,7 +18,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import swasi.android.component.mycomponents.AppButton
+import swasi.android.ui.components.AppButton
 import kotlin.random.Random
 
 class StateManagementActivity : ComponentActivity() {
@@ -106,7 +106,7 @@ fun CheckColorChange() {
             }
 
             AppButton(
-                title = "Show Or Hide",
+                text = "Show Or Hide",
                 onClick = {
                     isButtonVisible = !isButtonVisible
                 },
