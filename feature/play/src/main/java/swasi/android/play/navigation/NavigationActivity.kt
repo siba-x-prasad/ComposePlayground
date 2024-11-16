@@ -27,7 +27,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
-import swasi.android.component.SimpleTextButton
 import swasi.android.ui.components.AppTextView
 import swasi.android.ui.theme.ComposePlaygroundTheme
 
@@ -223,20 +222,6 @@ fun ScreenWithNavigation(
             modifier = Modifier.align(Alignment.BottomStart)
         ) {
             Text(text = leftButton)
-        }
-
-        SimpleTextButton(
-            buttonName = rightButton,
-            modifier = Modifier.align(Alignment.BottomEnd),
-            textColor = Color.White,
-            buttonColors = ButtonColors(
-                Color.Black,
-                Color.Blue,
-                Color.Gray,
-                Color.Green
-            )
-        ) {
-            onRightButtonClick()
         }
     }
 }

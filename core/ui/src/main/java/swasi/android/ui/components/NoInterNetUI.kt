@@ -25,10 +25,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import swasi.android.component.theme.dp_10
-import swasi.android.component.theme.dp_50
-import swasi.android.component.theme.dp_80
-import swasi.android.component.theme.sp_14
+import swasi.android.ui.theme.dp_10
+import swasi.android.ui.theme.dp_50
+import swasi.android.ui.theme.dp_80
+import swasi.android.ui.theme.sp_14
+import swasi.android.ui.R
 
 @Composable
 fun NetworkErrorDialog(
@@ -47,7 +48,7 @@ fun NetworkErrorDialog(
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Image(
-                    painter = painterResource(id = R.drawable.baseline_signal_wifi_statusbar_connected_no_internet_4_24),
+                    painter = painterResource(id = R.drawable.ic_rabit),
                     contentDescription = "logo",
                     Modifier.size(width = dp_80, height = dp_50)
                 )
@@ -61,7 +62,7 @@ fun NetworkErrorDialog(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Image(
-                painter = painterResource(id = R.drawable.baseline_signal_wifi_statusbar_connected_no_internet_4_24),
+                painter = painterResource(id = R.drawable.ic_rabit),
                 contentDescription = "logo",
                 alignment = Center,
                 modifier = Modifier.size(300.dp)

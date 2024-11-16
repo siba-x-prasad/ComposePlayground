@@ -19,7 +19,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import swasi.android.account.R
-import swasi.android.component.theme.ComponentTheme
+import swasi.android.ui.theme.ComponentTheme
 import swasi.android.ui.components.AppButton
 import swasi.android.ui.components.AppImageView
 import swasi.android.ui.components.ProgressIndicator

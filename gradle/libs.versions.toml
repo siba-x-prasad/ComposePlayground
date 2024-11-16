@@ -1,5 +1,8 @@
 [versions]
-android-gradle-plugin = "8.3.2"
+android-gradle-plugin = "8.7.2"
+kotlin = "2.0.0"
+agp = "8.7.2"
+kotlinCompilerVersion = "1.5.15"
 appcompat = "1.7.0"
 androidx-legacy-support = "1.0.0"
 coil-compose = "2.2.2"
@@ -184,3 +187,8 @@ android-application = { id = "com.android.application", version.ref = "android-g
 android-library = { id = "com.android.library", version.ref = "android-gradle-plugin" }
 org-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "org-jetbrains-kotlin-android" }
 
+#android-library = { id = "com.android.library", version.ref = "agp" }
+#android-application = { id = "com.android.application", version.ref = "agp" }
+#kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+#kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+#daggerHilt = {id  = "com.google.dagger.hilt.android", version.ref = "dagger-hilt" }

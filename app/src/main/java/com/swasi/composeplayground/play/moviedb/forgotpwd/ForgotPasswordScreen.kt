@@ -2,6 +2,7 @@ package com.swasi.composeplayground.play.moviedb.forgotpwd
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.ModalBottomSheetLayout
 import androidx.compose.material.ModalBottomSheetValue
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
@@ -17,7 +18,6 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
 import swasi.android.ui.components.AppOutLinedTextFieldWithIcon
-import swasi.android.ui.components.ModalBottomSheetLayout
 
 
 /**
@@ -33,7 +33,7 @@ fun ForgotPasswordBottomSheet() {
 
     val modalSheetState = rememberModalBottomSheetState(
         initialValue = ModalBottomSheetValue.Expanded,
-        confirmStateChange = { it != ModalBottomSheetValue.HalfExpanded },
+        confirmValueChange = { it != ModalBottomSheetValue.HalfExpanded },
         skipHalfExpanded = true
     )
 

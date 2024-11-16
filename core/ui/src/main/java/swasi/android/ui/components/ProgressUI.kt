@@ -18,11 +18,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import kotlinx.coroutines.delay
-import swasi.android.component.theme.Pink80
-import swasi.android.component.theme.Purple40
-import swasi.android.component.theme.dp_10
-import swasi.android.component.theme.dp_100
-import swasi.android.component.theme.dp_16
+import swasi.android.ui.theme.Pink80
+import swasi.android.ui.theme.Purple40
+import swasi.android.ui.theme.dp_10
+import swasi.android.ui.theme.dp_100
+import swasi.android.ui.theme.dp_16
+import swasi.android.ui.R
 
 @Composable
 fun SimpleProgress() {

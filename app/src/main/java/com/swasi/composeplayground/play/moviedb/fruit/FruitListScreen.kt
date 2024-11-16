@@ -29,8 +29,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.google.gson.Gson
 import com.swasi.composeplayground.R
 import com.swasi.composeplayground.play.state.UiState
-import swasi.android.component.theme.Colors
 import swasi.android.ui.components.ProgressIndicator
+import swasi.android.ui.theme.Colors
 
 /**
  * Created by Sibaprasad Mohanty on 14/03/2023.

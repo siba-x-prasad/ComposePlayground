@@ -31,7 +31,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.swasi.composeplayground.ui.theme.ComposePlaygroundTheme
-import swasi.android.component.theme.Colors
+import swasi.android.ui.theme.Colors
 import swasi.android.ui.components.AppButton
 
 /**

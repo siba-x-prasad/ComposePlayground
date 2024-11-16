@@ -21,7 +21,7 @@ import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import swasi.android.component.theme.LESSON_HEADER_COLOR
+import swasi.android.ui.theme.Colors.teal200
 
 val boldRegex = Regex("(?<!\\*)\\*\\*(?!\\*).*?(?<!\\*)\\*\\*(?!\\*)")
 
@@ -36,7 +36,7 @@ fun LessonHeader(text: String, modifier: Modifier = Modifier, textAlign: TextAli
         fontSize = 22.sp,
         textAlign = textAlign,
         text = text,
-        color = LESSON_HEADER_COLOR
+        color = teal200
     )
 }
 

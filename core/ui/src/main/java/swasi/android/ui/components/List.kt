@@ -42,13 +42,14 @@ import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import swasi.android.component.theme.LightBlue
-import swasi.android.component.theme.Pink80
-import swasi.android.component.theme.dp_10
-import swasi.android.component.theme.dp_15
-import swasi.android.component.theme.dp_3
-import swasi.android.component.theme.dp_50
-import swasi.android.component.theme.sp_16
+import swasi.android.ui.theme.LightBlue
+import swasi.android.ui.theme.Pink80
+import swasi.android.ui.theme.dp_10
+import swasi.android.ui.theme.dp_15
+import swasi.android.ui.theme.dp_3
+import swasi.android.ui.theme.dp_50
+import swasi.android.ui.theme.sp_16
+import swasi.android.ui.R
 
 @Composable
 fun HorizontalSimpleList(list: List<Country>) {

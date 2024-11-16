@@ -29,7 +29,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.swasi.composeplayground.ui.theme.ComposePlaygroundTheme
-import swasi.android.component.theme.Colors
+import swasi.android.ui.theme.Colors
 import swasi.android.ui.components.AppButton
 import swasi.android.ui.components.AppOutLinedTextFieldWithIcon
 import swasi.android.ui.components.AppOutlinedButton

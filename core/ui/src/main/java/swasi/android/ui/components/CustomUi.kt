@@ -21,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import swasi.android.ui.R
 
 @Composable
 fun ScrollableColumn(
@@ -59,8 +60,8 @@ fun ExpandableContent(
             if (needArrow) {
                 Icon(
                     painterResource(
-                        if (expandState.value) R.drawable.baseline_expand_less_24
-                        else R.drawable.baseline_expand_more_24
+                        if (expandState.value) android.R.drawable.arrow_down_float
+                        else android.R.drawable.arrow_down_float
                     ), "", Modifier.padding(start = 16.dp)
                 )
             }
