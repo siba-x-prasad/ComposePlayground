@@ -115,7 +115,7 @@ dependencies {
     implementation project(path: ':feature:profile')
     implementation project(path: ':feature:moviedb')
     implementation project(path: ':core:ui')
-    implementation project(path: ':core:model')
+    implementation project(path: ':core:domain')
     implementation project(path: ':core:network')
     implementation project(path: ':feature:play')
 }

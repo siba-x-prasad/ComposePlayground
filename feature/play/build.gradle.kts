@@ -49,7 +49,8 @@ dependencies {
     implementation(libs.material)
     testImplementation(libs.junit)
     implementation(project(mapOf("path" to ":core:ui")))
-    
+    implementation(project(mapOf("path" to ":core:domain")))
+    implementation(project(mapOf("path" to ":core:common")))
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidxTestExtJunit)
     androidTestImplementation(libs.espressoCore)

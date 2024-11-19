@@ -3,8 +3,8 @@ package swasi.android.network
 import okhttp3.ResponseBody
 import retrofit2.http.GET
 import retrofit2.http.Query
-import swasi.android.model.MovieResponse
-import swasi.android.model.PopularTvShowResponse
+import com.swasi.domain.tvshows.MovieResponse
+import com.swasi.domain.tvshows.PopularTvShowResponse
 
 /**
  * Created by Sibaprasad Mohanty on 11/03/2023.

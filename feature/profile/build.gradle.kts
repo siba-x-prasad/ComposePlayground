@@ -34,7 +34,7 @@ android {
 }
 
 dependencies {
-
+    implementation(libs.bundles.compose)
     implementation(libs.coreKtx)
     implementation(libs.appcompat)
     implementation(libs.material)
@@ -42,4 +42,6 @@ dependencies {
     androidTestImplementation(libs.androidxTestExtJunit)
     androidTestImplementation(libs.espressoCore)
     implementation(project(mapOf("path" to ":core:ui")))
+    implementation(project(mapOf("path" to ":core:domain")))
+    implementation(project(mapOf("path" to ":core:common")))
 }

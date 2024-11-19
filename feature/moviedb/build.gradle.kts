@@ -50,6 +50,7 @@ dependencies {
     androidTestImplementation(libs.androidxTestExtJunit)
     androidTestImplementation(libs.espressoCore)
     implementation(project(mapOf("path" to ":core:ui")))
-    implementation(project(mapOf("path" to ":core:model")))
+    implementation(project(mapOf("path" to ":core:domain")))
+    implementation(project(mapOf("path" to ":core:common")))
     implementation(project(mapOf("path" to ":core:network")))
 }

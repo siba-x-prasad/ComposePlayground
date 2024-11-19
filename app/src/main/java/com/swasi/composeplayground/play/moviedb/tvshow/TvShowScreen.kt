@@ -30,8 +30,9 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberAsyncImagePainter
 import com.swasi.composeplayground.R
+import com.swasi.domain.tvshows.ItemResult
 import swasi.android.ui.theme.Colors
-import swasi.android.model.ItemResult
+
 import swasi.android.moviedb.tvshow.TvShowViewModel
 import swasi.android.network.RestConfig
 import swasi.android.ui.components.ProgressIndicator

@@ -41,7 +41,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberAsyncImagePainter
 import com.swasi.composeplayground.R
 import swasi.android.ui.theme.Colors
-import swasi.android.model.MovieData
+import com.swasi.domain.tvshows.MovieData
 import swasi.android.network.RestConfig
 import swasi.android.ui.components.AppButton
 import swasi.android.ui.components.ProgressIndicator
