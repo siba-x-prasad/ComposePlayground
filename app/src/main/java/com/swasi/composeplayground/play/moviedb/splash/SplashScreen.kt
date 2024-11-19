@@ -61,9 +61,9 @@ fun SplashScreen(
                     )
                 )
 
-//                if (viewModel.isLoaded.value) {
-//                    onNavigateToOnBoarding()
-//                }
+                if (viewModel.isLoaded.value) {
+                    onNavigateToOnBoarding()
+                }
 
                 AppButton(
                     text = "Skip", onClick = {

@@ -20,7 +20,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
-import swasi.android.model.MovieData
+import com.swasi.domain.tvshows.MovieData
 import swasi.android.network.RestConfig
 import swasi.android.ui.components.AppButton
 import swasi.android.ui.components.AppText

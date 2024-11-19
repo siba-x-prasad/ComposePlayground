@@ -39,12 +39,13 @@ android {
 dependencies {
 
     implementation(libs.bundles.network)
-    implementation(project(mapOf("path" to ":core:model")))
+    
     implementation(libs.hilt)
     kapt(libs.hiltcompiler)
     kapt(libs.hiltcompilerAndroidx)
-
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidxTestExtJunit)
     androidTestImplementation(libs.espressoCore)
+    implementation(project(mapOf("path" to ":core:domain")))
+    implementation(project(mapOf("path" to ":core:common")))
 }

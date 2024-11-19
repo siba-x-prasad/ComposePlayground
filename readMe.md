@@ -1,5 +1,5 @@
 # Jetpack Compose
- 
+
 ## Github Tutorial
 
 - https://github.com/myofficework000/Jetpack-Compose-All-In-One-Guide/tree/master
@@ -78,6 +78,4 @@ implementation "androidx.compose.ui:ui-tooling:$compose_version"
   <img src="https://github.com/siba-x-prasad/ComposePlayground/blob/master/screenshots/ss5.png" width="150" height="300" />
  </td>
 </tr>
-</table> 
-
-
+</table>
