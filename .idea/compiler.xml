@@ -10,7 +10,6 @@
       <module name="ComposePlayground.core.datastore" target="21" />
       <module name="ComposePlayground.core.domain" target="21" />
       <module name="ComposePlayground.core.model" target="21" />
-      <module name="ComposePlayground.core.navigation" target="21" />
       <module name="ComposePlayground.core.network" target="21" />
       <module name="ComposePlayground.core.notification" target="21" />
       <module name="ComposePlayground.core.ui" target="21" />
